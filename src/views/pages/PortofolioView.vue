@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { projects } from '@/components/portofolio/pengalaman.js'
+import { projects } from '@/data/portofolio/PengalamanData.js'
 
 const searchQuery = ref('')
 const filteredProjects = computed(() => {
@@ -34,7 +34,10 @@ const highlightText = (text) => {
   const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const regex = new RegExp(escapedQuery, 'gi')
 
-  return escapeHtml(text).replace(regex, (match) => `<mark class="bg-warning text-dark">${match}</mark>`)
+  return escapeHtml(text).replace(
+    regex,
+    (match) => `<mark class="bg-warning text-dark">${match}</mark>`,
+  )
 }
 
 const activeTab = ref('testimoni')
@@ -51,38 +54,38 @@ const activeTab = ref('testimoni')
 
     <!-- Tab Buttons -->
     <div class="pill-tabs d-flex flex-wrap gap-2 justify-content-center mb-4">
-  <button
-    class="tab-pill-btn"
-    :class="{ active: activeTab === 'testimoni' }"
-    @click="activeTab = 'testimoni'"
-  >
-    Testimoni
-  </button>
+      <button
+        class="tab-pill-btn"
+        :class="{ active: activeTab === 'testimoni' }"
+        @click="activeTab = 'testimoni'"
+      >
+        Testimoni
+      </button>
 
-  <button
-    class="tab-pill-btn"
-    :class="{ active: activeTab === 'pengalaman' }"
-    @click="activeTab = 'pengalaman'"
-  >
-    Pengalaman
-  </button>
+      <button
+        class="tab-pill-btn"
+        :class="{ active: activeTab === 'pengalaman' }"
+        @click="activeTab = 'pengalaman'"
+      >
+        Pengalaman
+      </button>
 
-  <button
-    class="tab-pill-btn"
-    :class="{ active: activeTab === 'client' }"
-    @click="activeTab = 'client'"
-  >
-    Client
-  </button>
+      <button
+        class="tab-pill-btn"
+        :class="{ active: activeTab === 'client' }"
+        @click="activeTab = 'client'"
+      >
+        Client
+      </button>
 
-  <button
-    class="tab-pill-btn"
-    :class="{ active: activeTab === 'statistik' }"
-    @click="activeTab = 'statistik'"
-  >
-    Statistik
-  </button>
-</div>
+      <button
+        class="tab-pill-btn"
+        :class="{ active: activeTab === 'statistik' }"
+        @click="activeTab = 'statistik'"
+      >
+        Statistik
+      </button>
+    </div>
 
     <!--
     ╔══════════════════════════════════════╗
@@ -125,7 +128,7 @@ const activeTab = ref('testimoni')
         -->
 
         <div v-if="activeTab === 'pengalaman'">
-          <h4 class="fw-bold mb-4 text-center" bg-light >Portfolio Proyek</h4>
+          <h4 class="fw-bold mb-4 text-center" bg-light>Portfolio Proyek</h4>
           <p text-center class="text-secondary mb-4">
             Rekam jejak ini mencerminkan kompetensi kami dalam menangani berbagai proyek strategis,
             mulai dari audit sistem manajemen hingga penyusunan kebijakan teknis. Setiap baris data
@@ -164,7 +167,10 @@ const activeTab = ref('testimoni')
                   <div class="d-flex flex-column text-start">
                     <span class="fw-semibold" v-html="highlightText(project.title)"></span>
 
-                    <small class="text-secondary" v-html="highlightText(`${project.client} • ${project.year}`)"></small>
+                    <small
+                      class="text-secondary"
+                      v-html="highlightText(`${project.client} • ${project.year}`)"
+                    ></small>
                   </div>
                 </button>
               </h2>
@@ -292,7 +298,6 @@ const activeTab = ref('testimoni')
     </div>
   </section>
 </template>
-
 
 <style scoped>
 .pill-tabs .tab-pill-btn {
