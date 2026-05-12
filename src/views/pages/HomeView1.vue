@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { Tooltip } from 'bootstrap'
 import { images } from '@/data/home/TooltipData.js'
+import { services } from '@/data/sevices/servicesData'
 
 // ===============================
 // HERO SLIDES (PAKAI LINK)
@@ -18,7 +19,6 @@ const heroSlides = ref([
     desc: 'Meningkatkan efisiensi melalui teknologi',
   },
 ])
-import { services } from '@/data/services'
 const currentSlide = ref(0)
 let interval = null
 

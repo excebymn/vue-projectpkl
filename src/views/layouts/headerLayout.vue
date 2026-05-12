@@ -8,7 +8,8 @@ const searchQuery = ref('')
 const isFocused = ref(false)
 
 const menus = [
-  { name: 'Home', path: '/', keywords: ['home', 'beranda'] },
+  { name: 'Home1', path: '/', keywords: ['home', 'beranda'] },
+  { name: 'Home2', path: '/home2', keywords: ['home', 'beranda'] },
   { name: 'Portofolio', path: '/portofolio', keywords: ['portfolio', 'project'] },
   { name: 'Services', path: '/services', keywords: ['service', 'layanan'] },
   { name: 'About', path: '/about', keywords: ['about', 'tentang'] },
