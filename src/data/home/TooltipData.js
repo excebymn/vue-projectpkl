@@ -11,7 +11,7 @@ export const images = [
     src: '/images/SecondaryLogo/indosat.png',
     name: 'Indosat Ooredoo Hutchison (IOH)'
   },
-  {
+   {
     src: '/images/SecondaryLogo/inka.png',
     name: 'PT Industri Kereta Api (Persero)'
   },

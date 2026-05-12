@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { Tooltip } from 'bootstrap'
-import { images } from '@/components/home/TooltipComponent'
+import { images } from '@/data/home/TooltipData.js'
 
 // ===============================
 // HERO SLIDES (PAKAI LINK)
