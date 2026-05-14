@@ -125,8 +125,6 @@ import AboutData from '@/data/about/AboutData'
           </div>
         </div>
       </div>
-      .hero-section { min-height: 70vh; display: flex; align-items: center; } .hero-bg { position:
-      absolute; width: 100%; height: 100%; object-fit: cover; inset: 0; }
     </section>
 
     <!-- CTA -->
