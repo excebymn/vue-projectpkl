@@ -1,5 +1,13 @@
 <script setup>
 import AboutData from '@/data/about/AboutData'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+AOS.init({
+  duration: 800,
+  once: false,
+})
+
 </script>
 
 <template>
@@ -7,7 +15,7 @@ import AboutData from '@/data/about/AboutData'
     <!-- HERO -->
     <!-- Hero Section -->
     <!-- Hero Section dengan Gambar Latar Belakang -->
-    <section class="position-relative vh-100 overflow-hidden">
+    <section class="position-relative vh-100 overflow-hidden" data-aos="zoom-in">
       <!-- Background -->
       <img
         src="https://placehold.co/1600x900"
@@ -34,31 +42,32 @@ import AboutData from '@/data/about/AboutData'
 
     <!-- STORY SECTION -->
 
-    <section class="py-5">
-      <div class="container">
+    <section class="py-5" data-aos="zoom-in-up">
+      <div class="container" data-aos="slide-up">
         <div
           v-for="(item, index) in AboutData.stories"
           :key="index"
           class="row align-items-center g-5 mb-5"
           :class="{ 'flex-row-reverse': item.reverse }"
+          data-aos="flip-right"
         >
-          <div class="col-lg-6">
+          <div class="col-lg-6" data-aos="flip-left">
             <img :src="item.image" class="img-fluid rounded-4 shadow" />
           </div>
 
-          <div class="col-lg-6">
+          <div class="col-lg-6" data-aos="flip-right">
             <span class="text-warning fw-bold"> 0{{ index + 1 }} </span>
 
-            <h2 class="fw-bold mb-4">
+            <h2 class="fw-bold mb-4" data-aos="flip-left">
               {{ item.title }}
             </h2>
 
-            <p v-if="item.description" class="text-secondary">
+            <p v-if="item.description" class="text-secondary" data-aos="flip-right">
               {{ item.description }}
             </p>
 
-            <ul v-if="item.values" class="list-group list-group-flush">
-              <li v-for="(value, i) in item.values" :key="i" class="list-group-item px-0">
+            <ul v-if="item.values" class="list-group list-group-flush" data-aos="flip-left">
+              <li v-for="(value, i) in item.values" :key="i" class="list-group-item px-0" data-aos="flip-right">
                 <i class="bi bi-check-circle-fill text-warning me-2"></i>
 
                 {{ value }}
@@ -72,7 +81,7 @@ import AboutData from '@/data/about/AboutData'
     <!-- SERVICES -->
 
     <section class="py-5 bg-light">
-      <div class="container">
+      <div class="container" data-aos="slide-up">
         <div class="text-center mb-5">
           <h2 class="fw-bold">
             {{ AboutData.services.title }}
@@ -81,8 +90,8 @@ import AboutData from '@/data/about/AboutData'
           <p class="text-muted">Layanan unggulan Makna Consulting</p>
         </div>
 
-        <div class="row g-4">
-          <div v-for="(service, index) in AboutData.services.items" :key="index" class="col-md-4">
+        <div class="row g-4" data-aos="slide-down">
+          <div v-for="(service, index) in AboutData.services.items" :key="index" class="col-md-4" data-aos="flip-up">
             <div class="card h-100 border-0 shadow-sm p-4 text-center">
               <i :class="['bi', service.icon, 'display-4', 'text-warning']"></i>
 
@@ -109,16 +118,16 @@ import AboutData from '@/data/about/AboutData'
           </h2>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4" data-aos="flip-right">
           <div v-for="(member, index) in AboutData.team.members" :key="index" class="col-md-4">
             <div class="card border-0 shadow-sm text-center p-4">
-              <img :src="member.image" class="rounded-circle team-image mx-auto mb-3" />
+              <img :src="member.image" class="rounded-circle team-image mx-auto mb-3" data-aos="slide-left" />
 
-              <h5 class="fw-bold">
+              <h5 class="fw-bold" data-aos="slide-right">
                 {{ member.name }}
               </h5>
 
-              <p class="text-muted">
+              <p class="text-muted" data-aos="slide-left">
                 {{ member.position }}
               </p>
             </div>
@@ -133,24 +142,24 @@ import AboutData from '@/data/about/AboutData'
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-5">
-            <img :src="AboutData.cta.image" class="img-fluid rounded-4 shadow" />
+            <img :src="AboutData.cta.image" class="img-fluid rounded-4 shadow" data-aos="flip-left" />
           </div>
 
           <div class="col-lg-6 offset-lg-1">
-            <span class="text-warning fw-bold">
+            <span class="text-warning fw-bold" data-aos="slide-left">
               {{ AboutData.cta.badge }}
             </span>
 
-            <h2 class="display-6 fw-bold my-4">
+            <h2 class="display-6 fw-bold my-4" data-aos="slide-left">
               {{ AboutData.cta.title }}
             </h2>
 
-            <p class="text-muted">
+            <p class="text-muted" data-aos="slide-left">
               {{ AboutData.cta.description }}
             </p>
 
             <div class="pt-3">
-              <router-link to="/contact" class="btn btn-warning px-4 rounded-pill">
+              <router-link to="/contact" class="btn btn-warning px-4 rounded-pill" data-aos="flip-right">
                 Hubungi Kami
               </router-link>
             </div>

@@ -6,6 +6,13 @@ import { images } from '@/data/home/TooltipData.js'
 import { statistik } from '@/data/portofolio/StatistikData.js'
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+AOS.init({
+  duration: 800,
+  once: false,
+})
 
 const route = useRoute()
 const searchQuery = ref('')
@@ -106,7 +113,7 @@ const goToProject = (clientName) => {
 <template>
   <!-- Hero Section -->
   <!-- Hero Section dengan Gambar Latar Belakang -->
-  <section class="position-relative vh-100 overflow-hidden">
+  <section class="position-relative vh-100 overflow-hidden" data-aos="zoom-in">
     <!-- Background -->
     <img
       src="https://placehold.co/1600x900"
@@ -130,16 +137,16 @@ const goToProject = (clientName) => {
       </p>
     </div>
   </section>
-  <section class="container py-5">
+  <section class="container py-5" >
     <!-- Header -->
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-aos="flip-down">
       <p class="text-secondary mb-2">Portofolio Perusahaan</p>
 
       <h2 class="fw-bold">Data & Riwayat Kerja</h2>
     </div>
 
     <!-- Tab Buttons -->
-    <div class="pill-tabs d-flex flex-wrap gap-2 justify-content-center mb-4">
+    <div class="pill-tabs d-flex flex-wrap gap-2 justify-content-center mb-4" data-aos="slide-up">
       <!-- Testimoni -->
       <button
         class="tab-pill-btn"
@@ -189,7 +196,7 @@ const goToProject = (clientName) => {
         ║              TESTIMONI               ║
         ╚══════════════════════════════════════╝
         -->
-        <div v-if="activeTab === 'testimoni'" class="testimonial-section py-5">
+        <div v-if="activeTab === 'testimoni'" class="testimonial-section py-5" data-aos="slide-up">
           <div class="container">
             <!-- Heading -->
             <div class="text-center mb-5">
@@ -198,12 +205,12 @@ const goToProject = (clientName) => {
             </div>
 
             <!-- Card Grid -->
-            <div class="row g-4">
-              <div v-for="item in testimoni" :key="item.id" class="col-12 col-md-6 col-xl-4">
+            <div class="row g-4" >
+              <div v-for="item in testimoni" :key="item.id" class="col-12 col-md-6 col-xl-4" data-aos="flip-right">
                 <div class="testimonial-card h-100">
                   <!-- Header -->
                   <div
-                    class="d-flex align-items-center mb-3"
+                    class="d-flex align-items-center mb-3 "
                     :class="item.gambar ? '' : 'justify-content-between'"
                   >
                     <!-- Image -->
@@ -253,7 +260,7 @@ const goToProject = (clientName) => {
         ╚══════════════════════════════════════╝
         -->
 
-        <div v-if="activeTab === 'pengalaman'">
+        <div v-if="activeTab === 'pengalaman'" data-aos="zoom-in">
           <h4 class="fw-bold mb-4 text-center" bg-light>Portfolio Proyek</h4>
           <p text-center class="text-secondary mb-4">
             Rekam jejak ini mencerminkan kompetensi kami dalam menangani berbagai proyek strategis,
@@ -283,7 +290,7 @@ const goToProject = (clientName) => {
               :key="project.id"
             >
               <!-- HEADER -->
-              <h2 class="accordion-header">
+              <h2 class="accordion-header" data-aos="zoom-in">
                 <button
                   class="accordion-button collapsed"
                   type="button"
@@ -355,7 +362,7 @@ const goToProject = (clientName) => {
         ║                CLIENT                ║
         ╚══════════════════════════════════════╝
         -->
-        <div v-if="activeTab === 'client'" class="client-section py-5">
+        <div v-if="activeTab === 'client'" class="client-section py-5" data-aos="slide-up">
           <div class="container">
             <!-- Heading -->
             <div class="text-center mb-5">
@@ -383,11 +390,12 @@ const goToProject = (clientName) => {
             </div>
 
             <!-- Grid -->
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4 justify-content-center" >
               <div
                 v-for="(item, index) in filteredImages"
                 :key="index"
                 class="col-6 col-sm-4 col-md-3 col-lg-2"
+                data-aos="flip-right"
               >
                 <div class="client-card" @click="goToProject(item.name)">
                   <!-- Logo -->
@@ -410,7 +418,7 @@ const goToProject = (clientName) => {
         ║              STATISTIK               ║
         ╚══════════════════════════════════════╝
         -->
-        <section v-if="activeTab === 'statistik'" class="py-5 bg-body">
+        <section v-if="activeTab === 'statistik'" class="py-5 bg-body" data-aos="slide-up">
           <div class="container">
             <!-- Heading -->
             <div class="text-center mb-5">

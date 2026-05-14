@@ -1,5 +1,13 @@
 <script setup>
 import DeveloperData from '@/data/dev/DeveloperData'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+AOS.init({
+  duration: 800,
+  once: false,
+})
+
 </script>
 
 <template>

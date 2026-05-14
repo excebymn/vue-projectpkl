@@ -1,7 +1,13 @@
 <script setup>
 import { ref, computed } from 'vue'
-
 import { highlightedServices, allServices } from '@/data/services/ServiceData'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+AOS.init({
+  duration: 800,
+  once: false,
+})
 
 const search = ref('')
 
@@ -27,7 +33,7 @@ const highlightText = (text) => {
     <!-- HERO -->
     <!-- Hero Section -->
     <!-- Hero Section dengan Gambar Latar Belakang -->
-    <section class="position-relative vh-100 overflow-hidden">
+    <section class="position-relative vh-100 overflow-hidden" data-aos="zoom-in">
       <!-- Background -->
       <img
         src="https://placehold.co/1600x900"
@@ -53,8 +59,8 @@ const highlightText = (text) => {
     </section>
 
     <!-- HIGHLIGHT -->
-    <section class="container py-5">
-      <div class="d-flex justify-content-between align-items-center mb-4">
+    <section class="container py-5" data-aos="slide-up">
+      <div class="d-flex justify-content-between align-items-center mb-4" data-aos="flip-left">
         <div>
           <h2 class="fw-bold">Layanan Unggulan</h2>
 
@@ -62,7 +68,7 @@ const highlightText = (text) => {
         </div>
       </div>
 
-      <div class="row g-4">
+      <div class="row g-4" data-aos="flip-right">
         <div class="col-lg-4" v-for="(service, i) in highlightedServices" :key="i">
           <div class="card border-0 h-100 highlight-card">
             <img :src="service.image" class="card-img-top" />
@@ -82,7 +88,7 @@ const highlightText = (text) => {
     </section>
 
     <!-- SEARCH -->
-    <section class="container">
+    <section class="container" data-aos="flip-right">
       <div class="search-wrapper">
         <i class="bi bi-search"></i>
 
@@ -92,7 +98,7 @@ const highlightText = (text) => {
 
     <!-- ALL SERVICES -->
     <section class="container py-5">
-      <div class="d-flex justify-content-between mb-4">
+      <div class="d-flex justify-content-between mb-4" data-aos="zoom-in-up">
         <h2 class="fw-bold">Semua Layanan</h2>
 
         <span class="badge bg-warning text-dark">
@@ -100,8 +106,8 @@ const highlightText = (text) => {
         </span>
       </div>
 
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-4" v-for="(service, i) in filteredServices" :key="i">
+      <div class="row g-4" >
+        <div class="col-md-6 col-lg-4" v-for="(service, i) in filteredServices" :key="i" data-aos="zoom-in-up">
           <div class="card h-100 service-card border-0">
             <div class="card-body">
               <h5 class="fw-bold" v-html="highlightText(service.title)" />

@@ -2,6 +2,13 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import Logo from '/images/PrimaryLogo/Logo.png'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+AOS.init({
+  duration: 800,
+  once: true,
+})
 
 const router = useRouter()
 
@@ -136,101 +143,103 @@ const searchEnter = () => {
 }
 </script>
 
-<template>
-  <nav
-    class="navbar navbar-expand-lg bg-body-tertiary shadow-lg position-fixed top-0 start-50 translate-middle-x mt-3 px-3 rounded"
-    style="width: 90%; z-index: 999"
-  >
-    <div class="container-fluid">
-      <!-- Logo -->
+<template data-aos="zoom-in-down" data-aos-duration="1500">
 
-      <router-link to="/" class="navbar-brand d-flex align-items-center gap-2">
-        <img :src="Logo" height="32" alt="Logo" />
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary shadow-lg position-fixed top-0 start-50 translate-middle-x mt-3 px-3 rounded"
+      style="width: 90%; z-index: 999"
+    >
+      <div class="container-fluid">
+        <!-- Logo -->
 
-        <span class="fw-bold text-capitalize d-none d-lg-inline"> Makna Consulting </span>
-      </router-link>
+        <router-link to="/" class="navbar-brand d-flex align-items-center gap-2">
+          <img :src="Logo" height="32" alt="Logo" />
 
-      <!-- Toggle -->
+          <span class="fw-bold text-capitalize d-none d-lg-inline"> Makna Consulting </span>
+        </router-link>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarContent"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <!-- Toggle -->
 
-      <div id="navbarContent" class="collapse navbar-collapse">
-        <!-- MENU -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <ul class="navbar-nav mx-auto align-items-lg-center w-100 w-lg-auto">
-          <li v-for="menu in menus" :key="menu.path" class="nav-item">
-            <router-link
-              :to="menu.path"
-              class="nav-link px-3 py-2"
-              active-class="fw-bold text-warning"
-            >
-              {{ menu.name }}
-            </router-link>
-          </li>
-        </ul>
+        <div id="navbarContent" class="collapse navbar-collapse">
+          <!-- MENU -->
 
-        <hr class="d-lg-none my-2" />
-
-        <!-- SEARCH -->
-
-        <div class="position-relative ms-lg-auto w-100" style="max-width: 320px">
-          <div class="d-flex">
-            <input
-              v-model="searchQuery"
-              @focus="isFocused = true"
-              @keyup.enter="searchEnter"
-              @blur="setTimeout(() => (isFocused = false), 150)"
-              class="form-control"
-              type="search"
-              placeholder="Cari halaman..."
-            />
-
-            <button class="btn btn-warning ms-2 d-none d-lg-block" @click="searchEnter">
-              Search
-            </button>
-          </div>
-
-          <!-- RESULT -->
-
-          <ul
-            v-if="isFocused && filteredResults.length"
-            class="list-group position-absolute top-100 start-0 w-100 shadow mt-2 rounded overflow-auto"
-            style="z-index: 999; max-height: 260px"
-          >
-            <li
-              v-for="item in filteredResults"
-              :key="item.path"
-              @mousedown.prevent="goTo(item.path)"
-              class="list-group-item list-group-item-action py-3"
-            >
-              <div v-if="item.isPageMatch">📄 Buka {{ item.name }}</div>
-
-              <div v-else>🔍 Cari "{{ searchQuery }}" → {{ item.matchedKeyword }}</div>
-
-              <small class="text-muted d-block mt-1"> Halaman {{ item.name }} </small>
+          <ul class="navbar-nav mx-auto align-items-lg-center w-100 w-lg-auto">
+            <li v-for="menu in menus" :key="menu.path" class="nav-item">
+              <router-link
+                :to="menu.path"
+                class="nav-link px-3 py-2"
+                active-class="fw-bold text-warning"
+              >
+                {{ menu.name }}
+              </router-link>
             </li>
           </ul>
 
-          <!-- EMPTY -->
+          <hr class="d-lg-none my-2" />
 
-          <div
-            v-if="isFocused && searchQuery && !filteredResults.length"
-            class="position-absolute top-100 start-0 w-100 p-3 bg-body border rounded shadow mt-2"
-            style="z-index: 999"
-          >
-            Tidak ditemukan hasil untuk "{{ searchQuery }}"
+          <!-- SEARCH -->
+
+          <div class="position-relative ms-lg-auto w-100" style="max-width: 320px">
+            <div class="d-flex">
+              <input
+                v-model="searchQuery"
+                @focus="isFocused = true"
+                @keyup.enter="searchEnter"
+                @blur="setTimeout(() => (isFocused = false), 150)"
+                class="form-control"
+                type="search"
+                placeholder="Cari halaman..."
+              />
+
+              <button class="btn btn-warning ms-2 d-none d-lg-block" @click="searchEnter">
+                Search
+              </button>
+            </div>
+
+            <!-- RESULT -->
+
+            <ul
+              v-if="isFocused && filteredResults.length"
+              class="list-group position-absolute top-100 start-0 w-100 shadow mt-2 rounded overflow-auto"
+              style="z-index: 999; max-height: 260px"
+            >
+              <li
+                v-for="item in filteredResults"
+                :key="item.path"
+                @mousedown.prevent="goTo(item.path)"
+                class="list-group-item list-group-item-action py-3"
+              >
+                <div v-if="item.isPageMatch">📄 Buka {{ item.name }}</div>
+
+                <div v-else>🔍 Cari "{{ searchQuery }}" → {{ item.matchedKeyword }}</div>
+
+                <small class="text-muted d-block mt-1"> Halaman {{ item.name }} </small>
+              </li>
+            </ul>
+
+            <!-- EMPTY -->
+
+            <div
+              v-if="isFocused && searchQuery && !filteredResults.length"
+              class="position-absolute top-100 start-0 w-100 p-3 bg-body border rounded shadow mt-2"
+              style="z-index: 999"
+            >
+              Tidak ditemukan hasil untuk "{{ searchQuery }}"
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+
 </template>
 
 <style scoped>

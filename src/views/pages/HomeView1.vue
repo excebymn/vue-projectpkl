@@ -3,6 +3,14 @@ import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { Tooltip } from 'bootstrap'
 import { images } from '@/data/home/TooltipData.js'
 import { highlightedServices } from '@/data/services/ServiceData'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+AOS.init({
+  duration: 800,
+  once: false,
+})
+
 
 // ===============================
 // HERO SLIDES (PAKAI LINK)
@@ -209,7 +217,7 @@ onMounted(async () => {
 ║      DESKRIPSI PENDEK DI AWAL       ║
 ╚══════════════════════════════════════╝
 -->
-  <section class="home-about-section container my-5">
+  <section class="home-about-section container my-5" data-aos="fade-right">
     <div class="text-center mb-4">
       <h2 class="fw-bold text-uppercase">Makna Consulting</h2>
       <p class="text-muted">
@@ -224,12 +232,12 @@ onMounted(async () => {
 ╚══════════════════════════════════════╝
 -->
   <section class="container px-4 py-5" id="custom-cards">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-aos="fade-left">
       <h2 class="fw-bold display-5">Our Services</h2>
       <p class="text-muted">Solusi profesional untuk kebutuhan bisnis Anda</p>
     </div>
 
-    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4">
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4" data-aos="flip-left">
       <div class="col" v-for="(service, i) in highlightedServices" :key="i">
         <div
           class="card card-cover h-100 overflow-hidden text-white rounded-5 shadow-lg service-card"
@@ -243,7 +251,7 @@ onMounted(async () => {
           `,
           }"
         >
-          <div class="d-flex flex-column h-100 p-5 pb-3">
+          <div class="d-flex flex-column h-100 p-5 pb-3" data-aos="flip-left">
             <span v-if="service.category" class="badge bg-warning text-dark w-fit mb-3">
               {{ service.category }}
             </span>
@@ -277,7 +285,7 @@ onMounted(async () => {
 -->
   <section class="portfolio-cta py-5">
     <div class="container">
-      <div class="row align-items-center bg-light rounded-4 overflow-hidden shadow-sm">
+      <div class="row align-items-center bg-light rounded-4 overflow-hidden shadow-sm" data-aos="fade-right">
         <!-- Bagian Foto -->
         <div class="col-md-6 p-0">
           <img
@@ -289,7 +297,7 @@ onMounted(async () => {
         </div>
 
         <!-- Bagian Deskripsi -->
-        <div class="col-md-6 p-5">
+        <div class="col-md-6 p-5" data-aos="fade-left">
           <h2 class="fw-bold mb-3">Hasil Karya Kami</h2>
           <p class="text-muted mb-4">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio magnam quo rerum
@@ -310,9 +318,9 @@ onMounted(async () => {
 ║              TRUSTED BY              ║
 ╚══════════════════════════════════════╝
 -->
-  <section class="home-trusted-section container py-4 bg-white">
-    <p class="text-center fw-semibold">Dipercaya oleh:</p>
-    <div class="marquee-wrapper">
+  <section class="home-trusted-section container py-4 bg-white" data-aos="flip-up">
+    <p class="text-center fw-semibold">Dipercaya oleh:</p >
+    <div class="marquee-wrapper" data-aos="flip-down">
       <div class="marquee-track">
         <div
           v-for="(img, i) in loopImages"
@@ -332,10 +340,10 @@ onMounted(async () => {
     <div class="container text-center">
       <h2 class="fw-bold mb-3">Kenapa Makna Consulting?</h2>
 
-      <div class="row g-4 mt-3">
+      <div class="row g-4 mt-3" data-aos="flip-up">
         <div class="col-md-4" v-for="(item, index) in whyItems" :key="index">
           <router-link :to="item.link" class="text-decoration-none">
-            <div class="p-4 bg-white shadow rounded h-100 why-card">
+            <div class="p-4 bg-white shadow rounded h-100 why- ard">
               <i :class="['bi', item.icon, 'fs-1', 'mb-3', 'text-warning']"></i>
               <h5 class="text-dark">{{ item.title }}</h5>
               <p class="text-muted">{{ item.desc }}</p>
