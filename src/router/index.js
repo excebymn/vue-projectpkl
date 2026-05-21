@@ -1,17 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-//? import pages
+// Import page components used for route mapping.
 import HomeView1 from '../views/pages/HomeView1.vue'
 import HomeView2 from '../views/pages/HomeView2.vue'
 import AboutView from '../views/pages/AboutView.vue'
 import ContactView from '../views/pages/ContactView.vue'
 import ServicesView from '../views/pages/ServicesView.vue'
 import PortofolioView from '@/views/pages/PortofolioView.vue'
-import DeveloperView from '@/views/pages/DeveloperView.vue'
+import DeveloperView from '../views/pages/DeveloperView.vue'
 
-//? add route pages
+// Configure application routes and browser history mode.
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+
+  // Define all application routes and related metadata.
   routes: [
     {
       path: '/',
@@ -49,7 +51,7 @@ const router = createRouter({
       component: PortofolioView,
       meta: { title: 'Portofolio' },
     },
-        {
+    {
       path: '/developer',
       name: 'developer',
       component: DeveloperView,
@@ -58,10 +60,11 @@ const router = createRouter({
   ],
 })
 
-//? update title for each page
+// Dynamically update the browser tab title after every route navigation.
 router.afterEach((to) => {
   const CompanyName = 'Makna Computing'
 
+  // Fallback to company name if route metadata title is unavailable.
   if (!to.meta.title) {
     document.title = `${CompanyName}`
   } else {
@@ -69,5 +72,4 @@ router.afterEach((to) => {
   }
 })
 
-//? export route page
 export default router

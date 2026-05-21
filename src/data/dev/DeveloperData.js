@@ -1,3 +1,4 @@
+// Export structured developer and team profile data for the developer page.
 export default {
   hero: {
     title: 'Tim Pengembang',

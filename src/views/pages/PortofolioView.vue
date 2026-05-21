@@ -1,4 +1,5 @@
 <script setup>
+// Portfolio page component: manages tabs, search input, animated statistics, and data-driven displays.
 import { ref, computed } from 'vue'
 import { projects } from '@/data/portofolio/PengalamanData.js'
 import { testimoni } from '@/data/portofolio/TestimoniData.js'
@@ -6,12 +7,6 @@ import { images } from '@/data/home/TooltipData.js'
 import { statistik } from '@/data/portofolio/StatistikData.js'
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import AOS from 'aos'
-
-AOS.init({
-  duration: 800,
-  once: false,
-})
 
 const route = useRoute()
 const searchQuery = ref('')
@@ -99,7 +94,7 @@ const goToProject = (clientName) => {
   activeTab.value = 'pengalaman'
   searchQuery.value = clientName
 
-  // scroll halus ke atas section
+  // Scroll smoothly to the project accordion section once the tab is active.
   setTimeout(() => {
     document.getElementById('projectAccordion')?.scrollIntoView({
       behavior: 'smooth',
@@ -110,20 +105,19 @@ const goToProject = (clientName) => {
 </script>
 
 <template>
-  <!-- Hero Section -->
-  <!-- Hero Section dengan Gambar Latar Belakang -->
+  <!-- Hero section with background image and overlay. -->
   <section class="position-relative vh-100 overflow-hidden" data-aos="zoom-in">
-    <!-- Background -->
+    <!-- Background image layer -->
     <img
       src="https://placehold.co/1600x900"
       alt="Hero Background"
       class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
     />
 
-    <!-- Overlay -->
+    <!-- Dark overlay for contrast -->
     <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-75"></div>
 
-    <!-- Content -->
+    <!-- Centered hero content -->
     <div
       class="container position-absolute top-50 start-50 translate-middle text-center text-white"
     >
@@ -136,17 +130,17 @@ const goToProject = (clientName) => {
       </p>
     </div>
   </section>
-  <section class="container py-5" >
-    <!-- Header -->
+  <section class="container py-5">
+    <!-- Section heading -->
     <div class="text-center mb-5" data-aos="flip-down">
       <p class="text-secondary mb-2">Portofolio Perusahaan</p>
 
       <h2 class="fw-bold">Data & Riwayat Kerja</h2>
     </div>
 
-    <!-- Tab Buttons -->
+    <!-- Navigation pills for each portfolio tab -->
     <div class="pill-tabs d-flex flex-wrap gap-2 justify-content-center mb-4" data-aos="slide-up">
-      <!-- Testimoni -->
+      <!-- Testimonial tab -->
       <button
         class="tab-pill-btn"
         :class="{ active: activeTab === 'testimoni' }"
@@ -155,7 +149,7 @@ const goToProject = (clientName) => {
         Testimoni
       </button>
 
-      <!-- Pengalaman -->
+      <!-- Experience tab -->
       <button
         class="tab-pill-btn"
         :class="{ active: activeTab === 'pengalaman' }"
@@ -164,7 +158,7 @@ const goToProject = (clientName) => {
         Pengalaman
       </button>
 
-      <!-- Client -->
+      <!-- Client tab -->
       <button
         class="tab-pill-btn"
         :class="{ active: activeTab === 'client' }"
@@ -173,7 +167,7 @@ const goToProject = (clientName) => {
         Client
       </button>
 
-      <!-- Statistik -->
+      <!-- Statistics tab -->
       <button
         class="tab-pill-btn"
         :class="{ active: activeTab === 'statistik' }"
@@ -183,36 +177,33 @@ const goToProject = (clientName) => {
       </button>
     </div>
 
-    <!--
-    ╔══════════════════════════════════════╗
-    ║               CONTENT                ║
-    ╚══════════════════════════════════════╝
-    -->
+    <!-- Main content container for portfolio sections -->
     <div class="card border-0 shadow-sm rounded-4">
       <div class="card-body p-4">
-        <!--
-        ╔══════════════════════════════════════╗
-        ║              TESTIMONI               ║
-        ╚══════════════════════════════════════╝
-        -->
+        <!-- Testimonial panel -->
         <div v-if="activeTab === 'testimoni'" class="testimonial-section py-5" data-aos="slide-up">
           <div class="container">
-            <!-- Heading -->
+            <!-- Section heading -->
             <div class="text-center mb-5">
               <h2 class="fw-bold section-title">Client Testimonial</h2>
               <p class="section-subtitle">Beberapa pengalaman dan feedback dari client</p>
             </div>
 
-            <!-- Card Grid -->
-            <div class="row g-4" >
-              <div v-for="item in testimoni" :key="item.id" class="col-12 col-md-6 col-xl-4" data-aos="flip-right">
+            <!-- Testimonials grid -->
+            <div class="row g-4">
+              <div
+                v-for="item in testimoni"
+                :key="item.id"
+                class="col-12 col-md-6 col-xl-4"
+                data-aos="flip-right"
+              >
                 <div class="testimonial-card h-100">
-                  <!-- Header -->
+                  <!-- Card header -->
                   <div
-                    class="d-flex align-items-center mb-3 "
+                    class="d-flex align-items-center mb-3"
                     :class="item.gambar ? '' : 'justify-content-between'"
                   >
-                    <!-- Image -->
+                    <!-- Client image -->
                     <img
                       v-if="item.gambar"
                       :src="item.gambar"
@@ -220,7 +211,7 @@ const goToProject = (clientName) => {
                       class="testimonial-image"
                     />
 
-                    <!-- Name & Date -->
+                    <!-- Client name and date -->
                     <div class="ms-3 flex-grow-1">
                       <h5 class="mb-1 fw-semibold">
                         {{ item.nama }}
@@ -232,7 +223,7 @@ const goToProject = (clientName) => {
                     </div>
                   </div>
 
-                  <!-- Rating -->
+                  <!-- Rating display -->
                   <div class="d-flex align-items-center mb-3">
                     <div class="stars me-2">
                       <span v-for="star in generateStars(item.rating)" :key="star"> ⭐ </span>
@@ -243,7 +234,7 @@ const goToProject = (clientName) => {
                     </span>
                   </div>
 
-                  <!-- Description -->
+                  <!-- Testimonial text -->
                   <p class="testimonial-desc text-dark mb-0">
                     {{ item.deskripsi }}
                   </p>
@@ -253,11 +244,7 @@ const goToProject = (clientName) => {
           </div>
         </div>
 
-        <!--
-        ╔══════════════════════════════════════╗
-        ║             PENGALAMAN               ║
-        ╚══════════════════════════════════════╝
-        -->
+        <!-- Experience panel -->
 
         <div v-if="activeTab === 'pengalaman'" data-aos="zoom-in">
           <h4 class="fw-bold mb-4 text-center" bg-light>Portfolio Proyek</h4>
@@ -288,7 +275,7 @@ const goToProject = (clientName) => {
               v-for="(project, index) in filteredProjects"
               :key="project.id"
             >
-              <!-- HEADER -->
+              <!-- Project summary header -->
               <h2 class="accordion-header" data-aos="zoom-in">
                 <button
                   class="accordion-button collapsed"
@@ -307,7 +294,7 @@ const goToProject = (clientName) => {
                 </button>
               </h2>
 
-              <!-- DETAIL -->
+              <!-- Project details section -->
               <div
                 :id="`collapse${index}`"
                 class="accordion-collapse collapse"
@@ -356,21 +343,17 @@ const goToProject = (clientName) => {
           </div>
         </div>
 
-        <!--
-        ╔══════════════════════════════════════╗
-        ║                CLIENT                ║
-        ╚══════════════════════════════════════╝
-        -->
+        <!-- Client panel -->
         <div v-if="activeTab === 'client'" class="client-section py-5" data-aos="slide-up">
           <div class="container">
-            <!-- Heading -->
+            <!-- Section heading -->
             <div class="text-center mb-5">
               <h2 class="client-title fw-bold">Dipercaya Berbagai Instansi & Perusahaan</h2>
 
               <p class="client-subtitle">Beberapa client dan partner yang pernah bekerja sama</p>
             </div>
 
-            <!-- Search -->
+            <!-- Client search input -->
             <div class="row justify-content-center mb-5">
               <div class="col-md-6">
                 <div class="input-group shadow-sm">
@@ -388,8 +371,8 @@ const goToProject = (clientName) => {
               </div>
             </div>
 
-            <!-- Grid -->
-            <div class="row g-4 justify-content-center" >
+            <!-- Client logo grid -->
+            <div class="row g-4 justify-content-center">
               <div
                 v-for="(item, index) in filteredImages"
                 :key="index"
@@ -397,12 +380,12 @@ const goToProject = (clientName) => {
                 data-aos="flip-right"
               >
                 <div class="client-card" @click="goToProject(item.name)">
-                  <!-- Logo -->
+                  <!-- Client logo -->
                   <div class="client-logo-wrapper">
                     <img :src="item.src" :alt="item.name" class="client-logo" />
                   </div>
 
-                  <!-- Name -->
+                  <!-- Client name -->
                   <p class="client-name mb-0">
                     {{ item.name }}
                   </p>
@@ -412,14 +395,10 @@ const goToProject = (clientName) => {
           </div>
         </div>
 
-        <!--
-        ╔══════════════════════════════════════╗
-        ║              STATISTIK               ║
-        ╚══════════════════════════════════════╝
-        -->
+        <!-- Statistics panel -->
         <section v-if="activeTab === 'statistik'" class="py-5 bg-body" data-aos="slide-up">
           <div class="container">
-            <!-- Heading -->
+            <!-- Section heading -->
             <div class="text-center mb-5">
               <p class="text-warning fw-semibold text-uppercase small mb-2">Statistik Perusahaan</p>
 
@@ -431,29 +410,29 @@ const goToProject = (clientName) => {
               </p>
             </div>
 
-            <!-- Grid -->
+            <!-- Statistics cards grid -->
             <div class="row g-4">
               <div v-for="(item, index) in statistik" :key="index" class="col-12 col-sm-6 col-xl-3">
                 <div class="card border shadow-sm h-100 statistik-card">
                   <div class="card-body text-center p-4">
-                    <!-- Icon -->
+                    <!-- Metric icon -->
                     <div
                       class="d-inline-flex align-items-center justify-content-center rounded-4 bg-warning bg-opacity-10 text-warning statistik-icon mb-4"
                     >
                       <i :class="item.icon"></i>
                     </div>
 
-                    <!-- Number -->
+                    <!-- Animated metric value -->
                     <h2 class="fw-bold text-warning mb-3">
                       {{ animatedNumbers[index] }}{{ item.suffix }}
                     </h2>
 
-                    <!-- Title -->
+                    <!-- Metric title -->
                     <h5 class="fw-semibold mb-3">
                       {{ item.title }}
                     </h5>
 
-                    <!-- Desc -->
+                    <!-- Metric description -->
                     <p class="text-body-secondary mb-0">
                       {{ item.description }}
                     </p>
@@ -483,14 +462,14 @@ const goToProject = (clientName) => {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Hover: naik sedikit + bayangan halus */
+/* Hover: subtle lift and shadow effect */
 .pill-tabs .tab-pill-btn:hover {
   background-color: #f8f9fa;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Active: pill terisi + scale halus */
+/* Active: filled pill with smooth scaling */
 .pill-tabs .tab-pill-btn.active {
   background-color: #212529;
   color: #ffffff;
@@ -499,7 +478,7 @@ const goToProject = (clientName) => {
   box-shadow: 0 4px 12px rgba(33, 37, 41, 0.25);
 }
 
-/* Klik: efek "tekan" kecil */
+/* Pressed state: subtle click animation */
 .pill-tabs .tab-pill-btn:active {
   transform: scale(0.98);
   transition-duration: 0.1s;

@@ -1,12 +1,7 @@
 <script setup>
+// Services page component: manages featured services, searchable service list, and highlight rendering.
 import { ref, computed } from 'vue'
 import { highlightedServices, allServices } from '@/data/services/ServiceData'
-import AOS from 'aos'
-
-AOS.init({
-  duration: 800,
-  once: false,
-})
 
 const search = ref('')
 
@@ -29,21 +24,19 @@ const highlightText = (text) => {
 
 <template>
   <div class="service-page">
-    <!-- HERO -->
-    <!-- Hero Section -->
-    <!-- Hero Section dengan Gambar Latar Belakang -->
+    <!-- Hero section with background image and overlay -->
     <section class="position-relative vh-100 overflow-hidden" data-aos="zoom-in">
-      <!-- Background -->
+      <!-- Background image layer -->
       <img
         src="https://placehold.co/1600x900"
         alt="Hero Background"
         class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
       />
 
-      <!-- Overlay -->
+      <!-- Dark overlay for contrast -->
       <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-75"></div>
 
-      <!-- Content -->
+      <!-- Hero content centered in the viewport -->
       <div
         class="container position-absolute top-50 start-50 translate-middle text-center text-white"
       >
@@ -57,7 +50,7 @@ const highlightText = (text) => {
       </div>
     </section>
 
-    <!-- HIGHLIGHT -->
+    <!-- Featured services section -->
     <section class="container py-5" data-aos="slide-up">
       <div class="d-flex justify-content-between align-items-center mb-4" data-aos="flip-left">
         <div>
@@ -86,7 +79,7 @@ const highlightText = (text) => {
       </div>
     </section>
 
-    <!-- SEARCH -->
+    <!-- Search input section -->
     <section class="container" data-aos="flip-right">
       <div class="search-wrapper">
         <i class="bi bi-search"></i>
@@ -95,7 +88,7 @@ const highlightText = (text) => {
       </div>
     </section>
 
-    <!-- ALL SERVICES -->
+    <!-- All services listing section -->
     <section class="container py-5">
       <div class="d-flex justify-content-between mb-4" data-aos="zoom-in-up">
         <h2 class="fw-bold">Semua Layanan</h2>
@@ -105,8 +98,13 @@ const highlightText = (text) => {
         </span>
       </div>
 
-      <div class="row g-4" >
-        <div class="col-md-6 col-lg-4" v-for="(service, i) in filteredServices" :key="i" data-aos="zoom-in-up">
+      <div class="row g-4">
+        <div
+          class="col-md-6 col-lg-4"
+          v-for="(service, i) in filteredServices"
+          :key="i"
+          data-aos="zoom-in-up"
+        >
           <div class="card h-100 service-card border-0">
             <div class="card-body">
               <h5 class="fw-bold" v-html="highlightText(service.title)" />
@@ -118,9 +116,9 @@ const highlightText = (text) => {
       </div>
 
       <div v-if="filteredServices.length === 0" class="text-center py-5">
-        <h5>Tidak ditemukan</h5>
+        <h5>No results found</h5>
 
-        <p class="text-muted">Coba kata lain</p>
+        <p class="text-muted">Try a different search term</p>
       </div>
     </section>
   </div>

@@ -3,19 +3,44 @@ import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { Tooltip } from 'bootstrap'
 import { images } from '@/data/home/TooltipData.js'
 import { highlightedServices } from '@/data/services/ServiceData'
-import AOS from 'aos'
- import WaveOne from '@/data/home/wave1.vue'
-//import WaveTwo from '@/data/home/wave2.vue'
+import WaveOne from '@/data/home/wave1.vue'
 
+/*
+|--------------------------------------------------------------------------
+| Home View
+|--------------------------------------------------------------------------
+| Main landing page for Makna Consulting.
+|
+| Sections included:
+| - Hero slider
+| - About introduction
+| - Services preview
+| - Portfolio CTA
+| - Trusted by section
+| - Why choose us section
+|
+| Features:
+| - Auto hero slider
+| - Bootstrap tooltip integration
+| - Infinite marquee logo animation
+| - AOS animation support
+|--------------------------------------------------------------------------
+*/
 
-AOS.init({
-  duration: 800,
-  once: false,
-})
+/* ==========================================================================
+   HERO SLIDER DATA
+   ========================================================================== */
 
-// ===============================
-// HERO SLIDES (PAKAI LINK)
-// ===============================
+/*
+|--------------------------------------------------------------------------
+| Hero slides data
+|--------------------------------------------------------------------------
+| Each object contains:
+| - image : background image URL
+| - title : headline text
+| - desc  : short description
+|--------------------------------------------------------------------------
+*/
 const heroSlides = ref([
   {
     image: 'https://placehold.co/1600x800',
@@ -28,13 +53,42 @@ const heroSlides = ref([
     desc: 'Meningkatkan efisiensi melalui teknologi',
   },
 ])
+
+/*
+|--------------------------------------------------------------------------
+| Current active slide index
+|--------------------------------------------------------------------------
+*/
 const currentSlide = ref(0)
+
+/*
+|--------------------------------------------------------------------------
+| Slider interval reference
+|--------------------------------------------------------------------------
+*/
 let interval = null
 
+/*
+|--------------------------------------------------------------------------
+| Move to next slide
+|--------------------------------------------------------------------------
+*/
 const nextSlide = () => {
   currentSlide.value = (currentSlide.value + 1) % heroSlides.value.length
 }
 
+/* ==========================================================================
+   COMPONENT LIFECYCLE
+   ========================================================================== */
+
+/*
+|--------------------------------------------------------------------------
+| onMounted
+|--------------------------------------------------------------------------
+| - Start auto slider
+| - Initialize Bootstrap tooltips
+|--------------------------------------------------------------------------
+*/
 onMounted(() => {
   interval = setInterval(nextSlide, 5000)
 
@@ -45,15 +99,44 @@ onMounted(() => {
   })
 })
 
+/*
+|--------------------------------------------------------------------------
+| onUnmounted
+|--------------------------------------------------------------------------
+| Clear interval to prevent memory leak
+|--------------------------------------------------------------------------
+*/
 onUnmounted(() => {
   clearInterval(interval)
 })
 
+/* ==========================================================================
+   TRUSTED LOGO MARQUEE
+   ========================================================================== */
+
+/*
+|--------------------------------------------------------------------------
+| Original logo list
+|--------------------------------------------------------------------------
+*/
 const imageList = ref(images)
 
-// duplicated track (biar looping seamless)
+/*
+|--------------------------------------------------------------------------
+| Duplicate images for seamless infinite scrolling
+|--------------------------------------------------------------------------
+*/
 const loopImages = computed(() => [...imageList.value, ...imageList.value])
 
+/* ==========================================================================
+   WHY CHOOSE US SECTION
+   ========================================================================== */
+
+/*
+|--------------------------------------------------------------------------
+| Feature highlight cards
+|--------------------------------------------------------------------------
+*/
 const whyItems = [
   {
     title: 'Profesional',
@@ -75,8 +158,22 @@ const whyItems = [
   },
 ]
 
+/* ==========================================================================
+   AUTO SCROLL TARGET
+   ========================================================================== */
+
+/*
+|--------------------------------------------------------------------------
+| Reference for target section
+|--------------------------------------------------------------------------
+*/
 const targetSection = ref(null)
 
+/*
+|--------------------------------------------------------------------------
+| Auto scroll to target section after component rendered
+|--------------------------------------------------------------------------
+*/
 onMounted(async () => {
   await nextTick()
 
@@ -88,71 +185,78 @@ onMounted(async () => {
 </script>
 
 <template>
-  <!--
-╔══════════════════════════════════════╗
-║           HERO & WAVE SVG           ║
-╚══════════════════════════════════════╝
--->
+  <!-- =========================================================
+       HERO & SVG WAVE SECTION
+       ========================================================= -->
   <section>
     <WaveOne />
   </section>
-  <!--
-╔══════════════════════════════════════╗
-║      DESKRIPSI PENDEK DI AWAL       ║
-╚══════════════════════════════════════╝
--->
+
+  <!-- =========================================================
+       ABOUT INTRO SECTION
+       ========================================================= -->
   <section class="home-about-section container my-5" data-aos="fade-right">
     <div class="text-center mb-4">
+      <!-- Section Title -->
       <h2 class="fw-bold text-uppercase">Makna Consulting</h2>
+
+      <!-- Short Description -->
       <p class="text-muted">
         Solusi terpadu untuk meningkatkan kualitas SDM dan tata kelola organisasi
       </p>
     </div>
   </section>
 
-  <!--
-╔══════════════════════════════════════╗
-║         CTA KE PAGE SERVICES        ║
-╚══════════════════════════════════════╝
--->
+  <!-- =========================================================
+       SERVICES SECTION
+       ========================================================= -->
   <section class="container px-4 py-5" id="custom-cards">
+    <!-- Section Heading -->
     <div class="text-center mb-5" data-aos="fade-left">
       <h2 class="fw-bold display-5">Our Services</h2>
+
       <p class="text-muted">Solusi profesional untuk kebutuhan bisnis Anda</p>
     </div>
 
+    <!-- Services Grid -->
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4" data-aos="flip-left">
       <div class="col" v-for="(service, i) in highlightedServices" :key="i">
+        <!-- Service Card -->
         <div
           class="card card-cover h-100 overflow-hidden text-white rounded-5 shadow-lg service-card"
           :style="{
             backgroundImage: `
-          linear-gradient(
-          rgba(0,0,0,.45),
-          rgba(0,0,0,.65)
-          ),
-          url(${service.image})
-          `,
+              linear-gradient(
+                rgba(0,0,0,.45),
+                rgba(0,0,0,.65)
+              ),
+              url(${service.image})
+            `,
           }"
         >
           <div class="d-flex flex-column h-100 p-5 pb-3" data-aos="flip-left">
+            <!-- Category Badge -->
             <span v-if="service.category" class="badge bg-warning text-dark w-fit mb-3">
               {{ service.category }}
             </span>
 
+            <!-- Service Title -->
             <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
               {{ service.title }}
             </h2>
 
+            <!-- Service Description -->
             <p class="small text-light">
               {{ service.description }}
             </p>
 
+            <!-- Footer -->
             <div class="mt-auto d-flex justify-content-between align-items-center">
               <small v-if="service.duration">
                 {{ service.duration }}
               </small>
 
+              <!-- Detail Button -->
               <router-link to="/services" class="btn btn-warning rounded-pill px-4">
                 Detail
               </router-link>
@@ -162,18 +266,17 @@ onMounted(async () => {
       </div>
     </div>
   </section>
-  <!--
-╔══════════════════════════════════════╗
-║       CTA KE PAGE PORTOFOLIO        ║
-╚══════════════════════════════════════╝
--->
+
+  <!-- =========================================================
+       PORTFOLIO CTA SECTION
+       ========================================================= -->
   <section class="portfolio-cta py-5">
     <div class="container">
       <div
         class="row align-items-center bg-light rounded-4 overflow-hidden shadow-sm"
         data-aos="fade-right"
       >
-        <!-- Bagian Foto -->
+        <!-- Portfolio Image -->
         <div class="col-md-6 p-0">
           <img
             src="https://placehold.co/1600x800"
@@ -183,32 +286,37 @@ onMounted(async () => {
           />
         </div>
 
-        <!-- Bagian Deskripsi -->
+        <!-- Portfolio Description -->
         <div class="col-md-6 p-5" data-aos="fade-left">
           <h2 class="fw-bold mb-3">Hasil Karya Kami</h2>
+
           <p class="text-muted mb-4">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio magnam quo rerum
             assumenda porro minima necessitatibus beatae perferendis minus odit earum perspiciatis
             placeat aliquid, saepe ullam consequuntur qui tenetur in?
           </p>
 
-          <!-- Tombol Arahkan ke PortofolioView.vue -->
+          <!-- Portfolio Button -->
           <router-link to="/portofolio" class="btn btn-warning btn-lg px-4 shadow-sm">
-            Lihat Portofolio <i class="bi bi-arrow-right ms-2"></i>
+            Lihat Portofolio
+            <i class="bi bi-arrow-right ms-2"></i>
           </router-link>
         </div>
       </div>
     </div>
   </section>
-  <!--
-╔══════════════════════════════════════╗
-║              TRUSTED BY              ║
-╚══════════════════════════════════════╝
--->
+
+  <!-- =========================================================
+       TRUSTED BY SECTION
+       ========================================================= -->
   <section class="home-trusted-section container py-4 bg-white" data-aos="flip-up">
+    <!-- Section Label -->
     <p class="text-center fw-semibold">Dipercaya oleh:</p>
+
+    <!-- Logo Marquee -->
     <div class="marquee-wrapper" data-aos="flip-down">
       <div class="marquee-track">
+        <!-- Logo Item -->
         <div
           v-for="(img, i) in loopImages"
           :key="i"
@@ -223,17 +331,31 @@ onMounted(async () => {
     </div>
   </section>
 
+  <!-- =========================================================
+       WHY CHOOSE US SECTION
+       ========================================================= -->
   <section class="home-why-section bg-light py-5">
     <div class="container text-center">
+      <!-- Section Title -->
       <h2 class="fw-bold mb-3">Kenapa Makna Consulting?</h2>
 
+      <!-- Why Cards -->
       <div class="row g-4 mt-3" data-aos="flip-up">
         <div class="col-md-4" v-for="(item, index) in whyItems" :key="index">
           <router-link :to="item.link" class="text-decoration-none">
-            <div class="p-4 bg-white shadow rounded h-100 why- ard">
+            <div class="p-4 bg-white shadow rounded h-100 why-card">
+              <!-- Icon -->
               <i :class="['bi', item.icon, 'fs-1', 'mb-3', 'text-warning']"></i>
-              <h5 class="text-dark">{{ item.title }}</h5>
-              <p class="text-muted">{{ item.desc }}</p>
+
+              <!-- Title -->
+              <h5 class="text-dark">
+                {{ item.title }}
+              </h5>
+
+              <!-- Description -->
+              <p class="text-muted">
+                {{ item.desc }}
+              </p>
             </div>
           </router-link>
         </div>
@@ -243,19 +365,23 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
 .hero-carousel {
   height: 70vh;
   min-height: 400px;
 }
 
-/* setiap slide full tinggi */
+/* Full slide height */
 .carousel-item,
 .hero-bg {
   height: 70vh;
   min-height: 400px;
 }
 
-/* background image */
+/* Hero background image */
 .hero-bg {
   background-size: cover;
   background-position: center;
@@ -263,21 +389,24 @@ onMounted(async () => {
   position: relative;
 }
 
-/* overlay biar teks kebaca */
+/* Dark overlay for readability */
 .overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
 }
 
-/* content */
+/* Hero text content */
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 600px;
 }
 
-/* RESPONSIVE */
+/* =========================================================
+   HERO RESPONSIVE
+   ========================================================= */
+
 @media (max-width: 768px) {
   .hero-carousel,
   .carousel-item,
@@ -295,7 +424,11 @@ onMounted(async () => {
     margin: auto;
   }
 }
-/* NAV */
+
+/* =========================================================
+   HERO NAVIGATION BUTTONS
+   ========================================================= */
+
 .nav {
   position: absolute;
   top: 50%;
@@ -311,11 +444,15 @@ onMounted(async () => {
 .nav.left {
   left: 20px;
 }
+
 .nav.right {
   right: 20px;
 }
 
-/* DOT */
+/* =========================================================
+   HERO DOT INDICATORS
+   ========================================================= */
+
 .dots {
   position: absolute;
   bottom: 20px;
@@ -338,10 +475,13 @@ onMounted(async () => {
   background: white;
 }
 
-/* MARQUEE */
+/* =========================================================
+   MARQUEE SECTION
+   ========================================================= */
+
 .marquee-wrapper {
   overflow: hidden;
-  padding: 14px 0; /* ruang atas bawah */
+  padding: 14px 0;
 }
 
 .marquee-track {
@@ -352,21 +492,18 @@ onMounted(async () => {
   align-items: center;
 }
 
-.marquee-item {
-  flex: 0 0 auto;
-  padding: 0;
-}
-
-/* pause saat hover */
+/* Pause animation on hover */
 .marquee-wrapper:hover .marquee-track {
   animation-play-state: paused;
 }
 
+/* Logo item */
 .marquee-item {
   flex: 0 0 auto;
   position: relative;
 
-  height: 45px; /* penting: lebih besar dari img */
+  height: 45px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -374,11 +511,13 @@ onMounted(async () => {
   transition: transform 0.3s ease;
 }
 
+/* Hover effect */
 .marquee-item:hover {
   transform: scale(1.2);
   z-index: 10;
 }
 
+/* Logo image */
 .marquee-item img {
   max-height: 50px;
   width: auto;
@@ -386,20 +525,26 @@ onMounted(async () => {
   display: block;
 }
 
+/* Logo image hover */
 .marquee-item:hover img {
   transform: scale(1.2);
   z-index: 10;
 }
 
-/* KEYFRAME FIX */
+/* Infinite marquee animation */
 @keyframes marquee {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
 }
+
+/* =========================================================
+   WAVE SECTION
+   ========================================================= */
 
 .wave-container {
   width: 100%;
@@ -413,6 +558,10 @@ onMounted(async () => {
   height: auto;
 }
 
+/* =========================================================
+   SERVICE CARDS
+   ========================================================= */
+
 .service-card {
   background-size: cover;
   background-position: center;
@@ -420,10 +569,12 @@ onMounted(async () => {
   min-height: 420px;
 }
 
+/* Card hover effect */
 .service-card:hover {
   transform: translateY(-10px) scale(1.02);
 }
 
+/* Utility width fit */
 .w-fit {
   width: fit-content;
 }
@@ -431,13 +582,24 @@ onMounted(async () => {
 .ls-wide {
   font-size: 0.85rem;
 }
+
+/* =========================================================
+   GLOBAL IMAGE EFFECT
+   ========================================================= */
+
 img {
   transition: all 0.4s ease;
 }
+
 img:hover {
   transform: scale(1.02);
 }
-/* Menghilangkan margin negatif di mobile agar tidak overlap */
+
+/* =========================================================
+   MOBILE FIX
+   ========================================================= */
+
+/* Remove negative margin on smaller screens */
 @media (max-width: 991px) {
   .ms-n2 {
     margin-left: 0 !important;

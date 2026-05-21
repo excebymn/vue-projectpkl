@@ -1,3 +1,4 @@
+// Static configuration object containing page content and section data.
 export default {
   hero: {
     title: 'Makna Consulting',
@@ -5,6 +6,7 @@ export default {
     background: 'https://placehold.co/1600x700',
   },
 
+  // Content collection for storytelling and company profile sections.
   stories: [
     {
       title: 'Tentang Kami',
@@ -46,6 +48,7 @@ export default {
   services: {
     title: 'Layanan Utama',
 
+    // Service item definitions used to render feature or offering cards dynamically.
     items: [
       {
         icon: 'bi-people-fill',
@@ -70,6 +73,7 @@ export default {
   team: {
     title: 'Tim & Kepemimpinan',
 
+    // Team member data used for leadership and staff presentation.
     members: [
       {
         image: 'https://placehold.co/300',
@@ -99,6 +103,7 @@ export default {
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur expedita deleniti ducimus eaque rerum.',
 
+    // CTA visual asset displayed alongside promotional messaging.
     image: 'https://placehold.co/500x700',
 
     name: 'Bapak Nama Tokoh',
