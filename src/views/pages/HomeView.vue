@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import { useRouter } from 'vue-router'
 import { Tooltip } from 'bootstrap'
 import { images } from '@/data/home/TooltipData.js'
 import { highlightedServices } from '@/data/services/ServiceData'
@@ -158,9 +159,32 @@ const whyItems = [
   },
 ]
 
-/* ==========================================================================
-   AUTO SCROLL TARGET
-   ========================================================================== */
+/*
+|--------------------------------------------------------------------------
+| Router
+|--------------------------------------------------------------------------
+| Used for navigation and dynamic portfolio filtering.
+|
+*/
+const router = useRouter()
+
+/*
+|--------------------------------------------------------------------------
+| Navigate To Client Portfolio
+|--------------------------------------------------------------------------
+| Redirects user to portfolio page and automatically
+| filters based on selected client name.
+|
+*/
+const goToClient = (name) => {
+  router.push({
+    path: '/portofolio',
+    query: {
+      tab: 'client',
+      search: name,
+    },
+  })
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -182,7 +206,6 @@ onMounted(async () => {
     block: 'center',
   })
 })
-
 </script>
 
 <template>
@@ -220,7 +243,12 @@ onMounted(async () => {
     </div>
 
     <!-- Services Grid -->
-    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4" data-aos="flip-left" data-aos-once="false" data-aos-duration="600">
+    <div
+      class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4"
+      data-aos="flip-left"
+      data-aos-once="false"
+      data-aos-duration="600"
+    >
       <div class="col" v-for="(service, i) in highlightedServices" :key="i">
         <!-- Service Card -->
         <div
@@ -311,7 +339,11 @@ onMounted(async () => {
   <!-- =========================================================
        TRUSTED BY SECTION
        ========================================================= -->
-  <section class="home-trusted-section container py-4 bg-white" data-aos="flip-up" data-aos-once="false">
+  <section
+    class="home-trusted-section container py-4 bg-white"
+    data-aos="flip-up"
+    data-aos-once="false"
+  >
     <!-- Section Label -->
     <p class="text-center fw-semibold">Dipercaya oleh:</p>
 
@@ -323,6 +355,7 @@ onMounted(async () => {
           v-for="(img, i) in loopImages"
           :key="i"
           class="marquee-item"
+          @click="goToClient(img.name)"
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           :title="img.name"

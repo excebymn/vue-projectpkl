@@ -2,14 +2,6 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import Logo from '/images/PrimaryLogo/Logo.png'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
-// Initialize AOS animation library.
-AOS.init({
-  duration: 800,
-  once: true,
-})
 
 // Vue Router instance for page navigation.
 const router = useRouter()
@@ -26,11 +18,6 @@ const menus = [
     name: 'Home1',
     path: '/',
     keywords: ['home', 'beranda', 'utama', 'landing', 'awal'],
-  },
-  {
-    name: 'Home2',
-    path: '/home2',
-    keywords: ['home baru', 'beranda', 'versi baru', 'landing'],
   },
   {
     name: 'Portofolio',
@@ -187,7 +174,9 @@ const searchEnter = () => {
 
       <div id="navbarContent" class="collapse navbar-collapse">
         <!-- Navigation menu list -->
-        <ul class="navbar-nav mx-auto align-items-lg-center w-100 w-lg-auto mb-2 mb-lg-0" style="max-width: 600px">
+        <ul
+          class="navbar-nav mx-auto align-items-lg-center w-100 justify-content-center w-lg-auto mb-2 mb-lg-0"
+        >
           <li v-for="menu in menus" :key="menu.path" class="nav-item">
             <router-link
               :to="menu.path"
