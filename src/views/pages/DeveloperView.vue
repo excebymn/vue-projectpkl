@@ -23,7 +23,7 @@ import DeveloperData from '@/data/dev/DeveloperData'
     <!-- =========================================================
          HERO SECTION
          ========================================================= -->
-    <section class="position-relative vh-100 overflow-hidden"> 
+    <section class="position-relative vh-100 overflow-hidden">
       <!-- Background Image -->
       <img
         src="https://placehold.co/1600x900"
