@@ -15,7 +15,7 @@ const isFocused = ref(false)
 // Main navigation menu list with related search keywords.
 const menus = [
   {
-    name: 'Home1',
+    name: 'Home',
     path: '/',
     keywords: ['home', 'beranda', 'utama', 'landing', 'awal'],
   },

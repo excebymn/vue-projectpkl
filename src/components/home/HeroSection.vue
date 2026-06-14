@@ -1,7 +1,45 @@
-<script>
-export default {
-  name: 'WaveOne',
-}
+<script setup>
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import img1 from '@/assets/home/hero/1.jpg'
+import img2 from '@/assets/home/hero/2.jpg'
+import img3 from '@/assets/home/hero/3.jpg'
+import img4 from '@/assets/home/hero/4.jpg'
+
+const images = [img1, img2, img3, img4]
+
+const currentImage = ref(0)
+
+let interval = null
+
+onMounted(() => {
+  interval = setInterval(() => {
+    currentImage.value = (currentImage.value + 1) % images.length
+  }, 3000) // ganti setiap 3 detik
+})
+
+onUnmounted(() => {
+  clearInterval(interval)
+})
+/*
+|--------------------------------------------------------------------------
+| Reference for target section
+|--------------------------------------------------------------------------
+*/
+const targetSection = ref(null)
+
+/*
+|--------------------------------------------------------------------------
+| Auto scroll to target section after component rendered
+|--------------------------------------------------------------------------
+*/
+onMounted(async () => {
+  await nextTick()
+
+  targetSection.value?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+  })
+})
 </script>
 
 <template>
@@ -56,25 +94,29 @@ export default {
     <h1 class="display-4 fw-bold">Makna Consulting</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fuga eum recusandae,
-        inventore adipisci officiis laudantium obcaecati itaque quis? Et, consequatur? Reiciendis
-        sunt voluptate id.
+        CV. Mapah Karya Natar Merupakan perusahaann yang bergerak di bidang pengembangan sumber daya
+        manusia, manajemen pemerintahan serta program-program pendidikan, berdiri sejak tahun 2017
+        dan telah dipercaya di seluruh Indonesia.
       </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5" ref="targetSection">
         <button type="button" class="btn btn-dark btn-lg px-4 me-sm-3">Pelajari Layanan</button>
         <button type="button" class="btn btn-outline-dark btn-lg px-4">Hubungi Kami</button>
       </div>
     </div>
-    <div class="overflow-hidden" style="max-height: 30vh">
+    <div class="overflow-hidden" >
       <div class="container px-5">
-        <img
-          src="https://placehold.co/700x500"
-          class="img-fluid border rounded-3 shadow-lg mb-4"
-          alt=""
-          width="700"
-          height="500"
-          loading="lazy"
-        />
+        <Transition name="fade" mode="out-in">
+          <img
+            :key="currentImage"
+            :src="images[currentImage]"
+            class="img-fluid border rounded-3 shadow-lg mb-4"
+            alt=""
+            width="700"
+            height="500"
+            loading="lazy"
+            data-aos-anchor-placement="center-center"
+          />
+        </Transition>
       </div>
     </div>
   </div>
@@ -126,7 +168,17 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 /* =========================
    ANIMATION
 ========================= */

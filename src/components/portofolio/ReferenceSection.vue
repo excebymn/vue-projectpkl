@@ -155,11 +155,4 @@ import {
 const activeReference = ref('soft-skills')
 </script>
 
-<style scoped>
-/* Style khusus referensi belum terlihat pada file yang kamu kirim.
-   Jika nanti ada CSS tambahan seperti:
-   .pill-wrapper
-   .statistik-card
-   .statistik-subtitle
-   kirim saja, nanti tinggal ditempel di sini. */
-</style>
+
