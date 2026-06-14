@@ -1,13 +1,42 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted} from 'vue'
 import { useRoute } from 'vue-router'
-
 import ClientSection from '@/components/portofolio/ClientSection.vue'
 import PengalamanSection from '@/components/portofolio/PengalamanSection.vue'
 import TestimoniSection from '@/components/portofolio/TestimoniSection.vue'
 import StatistikSection from '@/components/portofolio/StatisticSection.vue'
 import ReferensiSection from '@/components/portofolio/ReferenceSection.vue'
 
+
+import img1 from '@/assets/portofolio/hero/1.png'
+import img2 from '@/assets/portofolio/hero/2.png'
+import img3 from '@/assets/portofolio/hero/3.png'
+import img4 from '@/assets/portofolio/hero/4.png'
+import img5 from '@/assets/portofolio/hero/5.png'
+
+const images = [img1, img2, img3, img4, img5]
+
+const currentImage = ref(0)
+
+let interval = null
+
+onMounted(() => {
+  interval = setInterval(() => {
+    currentImage.value = (currentImage.value + 1) % images.length
+  }, 3000) // ganti setiap 3 detik
+})
+onMounted(() => {
+  images.forEach(src => {
+    const img = new Image()
+    img.src = src
+  })
+})
+
+
+
+onUnmounted(() => {
+  clearInterval(interval)
+})
 const route = useRoute()
 
 const activeTab = ref(route.query.tab || 'testimoni')
@@ -32,11 +61,14 @@ const goToProject = (clientName) => {
     data-aos="zoom-in"
     data-aos-once="false"
   >
-    <img
-      src="https://placehold.co/1600x900"
-      alt="Hero Background"
-      class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
-    />
+    <Transition name="fade" mode="out-in">
+      <img
+        :key="currentImage"
+        :src="images[currentImage]"
+        alt="Hero Background"
+        class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+      />
+    </Transition>
 
     <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-75"></div>
 
@@ -121,6 +153,17 @@ const goToProject = (clientName) => {
 </template>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+
 .pill-tabs .tab-pill-btn {
   border-radius: 50px;
   padding: 0.6rem 1.8rem;

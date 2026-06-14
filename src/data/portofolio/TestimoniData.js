@@ -1,42 +1,54 @@
+import img1 from '@/assets/portofolio/testimoni/1.png'
+import img2 from '@/assets/portofolio/testimoni/2.png'
+import img3 from '@/assets/portofolio/testimoni/3.png'
+import img4 from '@/assets/portofolio/testimoni/4.png'
+
 export const testimoni = [
   {
     id: 1,
-    nama: "Rizky Pratama",
+    nama: "Drs. Masruri",
     deskripsi:
-      "Website yang dibuat sangat clean dan responsif. Komunikasi juga cepat dan hasil akhirnya sesuai ekspektasi.",
+      "ISO sangat bermanfaat dalam peningkatan mutu layanan kami, antara lain dari kenaikan survei IKM serta tumbuhnya semangat dan inovasi dari teman-teman ASN. Untuk itu akan kami lakukan evaluasi secara berkala dengan harapan mutu layanan kami terus meningkat.",
     rating: 5,
-    tanggal: "12 Mei 2026",
-    gambar: "/images/testimoni/rizky.jpg",
+    tanggal: "",
+    gambar: img1,
+    jabatan:
+      "Kepala Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Magetan",
   },
 
   {
     id: 2,
-    nama: "Alya Putri",
+    nama: "Thatit Adi Candra, S.ST",
     deskripsi:
-      "Desain UI modern banget dan enak dipakai di HP maupun desktop. Recommended buat portfolio bisnis.",
-    rating: 4.8,
-    tanggal: "28 April 2026",
-    gambar: "",
+      "Kami dari BKPSDM Magetan, selama 2 hari pelaksanaan Surveillance Sistem Manajemen Mutu ini sangat aplikatif karena kami menemukan solusi terkait cara-cara publikasi yang efektif.",
+    rating: 5,
+    tanggal: "",
+    gambar: img2,
+    jabatan:
+      "Kepala Bidang Mutasi dan Promosi Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Magetan",
   },
 
   {
     id: 3,
-    nama: "Fahmi Akbar",
+    nama: "Inci Abdul Yatim, S.E., M.AP",
     deskripsi:
-      "Pengerjaan cepat, revisi juga dilayani dengan baik. Overall puas sama hasil project-nya.",
-    rating: 4.9,
-    tanggal: "3 Maret 2026",
-    gambar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+      "Terima kasih kepada Makna Consulting atas sharing ilmu yang dibagikan. Ilmu tersebut akan kami pergunakan untuk kampanye program-program yang ada di BKPSDM Magetan.",
+    rating: 5,
+    tanggal: "",
+    gambar: img3,
+    jabatan:
+      "Kepala Bidang Pengembangan Kompetensi Aparatur Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Magetan",
   },
 
   {
     id: 4,
-    nama: "Nadia Maharani",
+    nama: "Nurhidayah Irjayanti Hasan, S.AP",
     deskripsi:
-      "Landing page terlihat profesional dan animasinya halus. Cocok banget buat branding usaha.",
+      "Banyak sekali kegiatan yang bermanfaat bagi organisasi dan juga saya secara pribadi. Sukses terus untuk Makna Consulting.",
     rating: 5,
-    tanggal: "17 Februari 2026",
-    gambar: "",
+    tanggal: "",
+    gambar: img4,
+    jabatan:
+      "Analis Sumber Daya Manusia Aparatur Ahli Muda Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Magetan",
   },
 ]
