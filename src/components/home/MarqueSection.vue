@@ -40,7 +40,7 @@ const goToClient = (name) => {
     <div class="trusted-card">
       <div class="text-center mb-5">
         <h2 class="fw-bold mb-2">Telah dipercaya</h2>
-        <p class="text-muted mb-0">
+        <p class="mb-0">
           Berbagai perusahaan, instansi, dan organisasi telah mempercayai layanan kami.
         </p>
       </div>
@@ -79,10 +79,18 @@ const goToClient = (name) => {
 }
 
 .trusted-card {
-  background: #f8f9fa;
+  background: var(--brand-yellow);
   border-radius: 24px;
   padding: 3rem 2rem;
   overflow: hidden;
+}
+
+.trusted-card h2 {
+  color: #212529;
+}
+
+.trusted-card p {
+  color: rgba(33, 37, 41, 0.75);
 }
 
 .marquee-wrapper {
@@ -106,7 +114,7 @@ const goToClient = (name) => {
   left: 0;
   background: linear-gradient(
     to right,
-    #f8f9fa,
+    var(--brand-yellow),
     transparent
   );
 }
@@ -115,7 +123,7 @@ const goToClient = (name) => {
   right: 0;
   background: linear-gradient(
     to left,
-    #f8f9fa,
+    var(--brand-yellow),
     transparent
   );
 }

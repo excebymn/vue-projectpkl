@@ -24,14 +24,14 @@ const filteredImages = computed(() => {
       <div class="row justify-content-center mb-5">
         <div class="col-md-6">
           <div class="input-group shadow-sm">
-            <span class="input-group-text">
-              <i class="bi bi-search"></i>
+            <span class="input-group-text bg-cream">
+              <i class="bi bi-search bg-cream"></i>
             </span>
 
             <input
               v-model="searchQuery"
               type="text"
-              class="form-control"
+              class="form-control bg-cream"
               placeholder="Cari client atau instansi..."
             />
           </div>
@@ -43,11 +43,11 @@ const filteredImages = computed(() => {
         <div
           v-for="(item, index) in filteredImages"
           :key="index"
-          class="col-6 col-sm-4 col-md-3 col-lg-2"
+          class="col-6 col-sm-4 col-md-3 col-lg-2 bg-cream"
           data-aos="flip-right"
           data-aos-once="false"
         >
-          <div class="client-card" @click="emit('go-to-project', item.name)">
+          <div class="client-card bg-cream" @click="emit('go-to-project', item.name)">
             <!-- Client logo -->
             <div class="client-logo-wrapper">
               <img :src="item.src" :alt="item.name" class="client-logo" />

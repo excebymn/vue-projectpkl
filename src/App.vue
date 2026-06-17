@@ -6,11 +6,13 @@ import CallToActionLayout from './views/layouts/CallToActionLayout.vue'
 </script>
 
 <template>
-  <HeaderLayout />
-  <RouterView />
-  <FloatingButtons />
-  <CallToActionLayout />
-  <FooterLayout />
+  <div class="bg-cream">
+    <HeaderLayout />
+    <RouterView />
+    <FloatingButtons />
+    <CallToActionLayout />
+    <FooterLayout />
+  </div>
 </template>
 
 <style scoped></style>

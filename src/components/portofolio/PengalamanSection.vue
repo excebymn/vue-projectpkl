@@ -1,6 +1,6 @@
 <template>
   <div data-aos="zoom-in" data-aos-once="false">
-    <h4 class="fw-bold mb-4 text-center" bg-light>Portfolio Proyek</h4>
+    <h4 class="fw-bold mb-4 text-center" bg-cream>Portfolio Proyek</h4>
 
     <p text-center class="text-secondary mb-4">
       Rekam jejak ini mencerminkan kompetensi kami dalam menangani berbagai proyek strategis,
@@ -17,7 +17,7 @@
       <input
         v-model="searchQuery"
         type="text"
-        class="form-control"
+        class="form-control bg-cream border-yellow"
         placeholder="atau cari berdasarkan nama proyek, klien, kategori, dll..."
         style="max-width: 500px"
       />
@@ -25,13 +25,13 @@
 
     <div class="accordion" id="projectAccordion">
       <div
-        class="accordion-item"
+        class="accordion-item bg-cream"
         v-for="(project, index) in filteredProjects"
         :key="project.id"
       >
         <h2 class="accordion-header" data-aos="zoom-in" data-aos-once="false">
           <button
-            class="accordion-button collapsed"
+            class="accordion-button collapsed bg-cream"
             type="button"
             data-bs-toggle="collapse"
             :data-bs-target="`#collapse${index}`"
@@ -52,10 +52,10 @@
 
         <div
           :id="`collapse${index}`"
-          class="accordion-collapse collapse"
+          class="accordion-collapse collapse bg-cream"
           data-bs-parent="#projectAccordion"
         >
-          <div class="accordion-body">
+          <div class="accordion-body bg-cream">
             <div class="row g-3">
               <div class="col-md-6">
                 <strong>Klien</strong>
@@ -120,7 +120,7 @@ const highlightText = (text) => {
 
   return escapeHtml(text).replace(
     regex,
-    (match) => `<mark class="bg-warning text-dark">${match}</mark>`,
+    (match) => `<mark class="bg-yellow text-dark">${match}</mark>`,
   )
 }
 </script>

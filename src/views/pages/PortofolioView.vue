@@ -143,7 +143,7 @@ onMounted(async () => {
 
       <!-- Content -->
       <div class="card border-0 shadow-sm rounded-4">
-        <div class="card-body p-4">
+        <div class="card-body p-4 bg-cream">
           <TestimoniSection v-if="activeTab === 'testimoni'" />
           <PengalamanSection v-if="activeTab === 'pengalaman'" />
           <ClientSection v-if="activeTab === 'client'" @go-to-project="goToProject" />
@@ -177,7 +177,7 @@ onMounted(async () => {
 }
 
 .pill-tabs .tab-pill-btn:hover {
-  background-color: #f8f9fa;
+  background-color: #FFF4CC;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }

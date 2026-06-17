@@ -48,7 +48,7 @@ const whyItems = [
   <section class="portfolio-cta bg-warning py-5 my-5">
     <div class="container">
       <div
-        class="row align-items-center bg-light rounded-4 overflow-hidden shadow-sm"
+        class="row align-items-center bg-cream rounded-4 overflow-hidden shadow-sm"
         data-aos="fade-right"
         data-aos-once="false"
       >
@@ -81,15 +81,15 @@ const whyItems = [
 
   <MarqueSection />
 
-  <section class="home-why-section bg-light py-5">
+  <section class="home-why-section bg-cream py-5">
     <div class="container text-center">
       <h2 class="fw-bold mb-3">Kenapa Makna Consulting?</h2>
 
       <div class="row g-4 mt-3" data-aos="flip-up" data-aos-once="false">
         <div class="col-md-4" v-for="(item, index) in whyItems" :key="index">
           <router-link :to="item.link" class="text-decoration-none">
-            <div class="p-4 bg-white shadow rounded h-100 why-card">
-              <i :class="['bi', item.icon, 'fs-1', 'mb-3', 'text-warning']"></i>
+            <div class="p-4 bg-cream shadow rounded h-100 why-card">
+              <i :class="['bi', item.icon, 'fs-1', 'mb-3', 'text-yellow']"></i>
 
               <h5 class="text-dark">
                 {{ item.title }}

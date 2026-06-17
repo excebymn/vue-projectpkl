@@ -57,3 +57,87 @@ a,
     padding: 0 2rem;
   }
 } */
+
+/* ===== Brand Colors ===== */
+
+:root {
+  --brand-yellow: #FFBE00;
+  --brand-cream: #FFF4CC;
+}
+
+/* ===== Background ===== */
+
+.bg-yellow {
+  background-color: var(--brand-yellow) !important;
+}
+
+.bg-cream {
+  background-color: var(--brand-cream) !important;
+}
+
+/* ===== Text ===== */
+
+.text-yellow {
+  color: var(--brand-yellow) !important;
+}
+
+.text-cream {
+  color: var(--brand-cream) !important;
+}
+
+/* ===== Border ===== */
+
+.border-yellow {
+  border-color: var(--brand-yellow) !important;
+}
+
+.border-cream {
+  border-color: var(--brand-cream) !important;
+}
+
+/* ===== Buttons ===== */
+
+.btn-yellow {
+  background-color: var(--brand-yellow);
+  border-color: var(--brand-yellow);
+  color: #212529;
+}
+
+.btn-yellow:hover {
+  background-color: #e6ab00;
+  border-color: #e6ab00;
+  color: #212529;
+}
+
+.btn-cream {
+  background-color: var(--brand-cream);
+  border-color: var(--brand-cream);
+  color: #212529;
+}
+
+.btn-cream:hover {
+  background-color: #f5e8b8;
+  border-color: #f5e8b8;
+  color: #212529;
+}
+
+/* ===== Outline Buttons ===== */
+
+.btn-outline-yellow {
+  color: var(--brand-yellow);
+  border: 1px solid var(--brand-yellow);
+}
+
+.btn-outline-yellow:hover {
+  background-color: var(--brand-yellow);
+  color: #212529;
+}
+
+.btn-outline-cream {
+  color: #212529;
+  border: 1px solid var(--brand-cream);
+}
+
+.btn-outline-cream:hover {
+  background-color: var(--brand-cream);
+}

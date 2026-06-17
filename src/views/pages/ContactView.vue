@@ -95,7 +95,7 @@ onMounted(async () => {
           <div class="row g-4">
             <div v-for="item in contactData" :key="item.title" class="col-md-6">
               <a :href="item.link" target="_blank" class="text-decoration-none text-reset">
-                <div class="card border-0 shadow-sm h-100 contact-card p-4">
+                <div class="card bg-cream border-0 shadow-sm h-100 contact-card p-4">
                   <div class="contact-icon mb-3" :class="[item.iconBg, item.iconColor]">
                     <i :class="['bi', item.icon]"></i>
                   </div>
@@ -108,7 +108,7 @@ onMounted(async () => {
                     {{ item.description }}
                   </p>
 
-                  <span class="badge text-bg-light border">
+                  <span class="badge text-dark border">
                     {{ item.username }}
                   </span>
                 </div>

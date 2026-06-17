@@ -1,6 +1,6 @@
 <template>
   <section
-    class="py-5 bg-body"
+    class="py-5 bg-cream"
     data-aos="slide-up"
     data-aos-once="false"
   >
@@ -28,7 +28,7 @@
           :key="index"
           class="col-12 col-sm-6 col-xl-3"
         >
-          <div class="card border shadow-sm h-100 statistik-card">
+          <div class="card border shadow-sm h-100 statistik-card bg-cream">
             <div class="card-body text-center p-4">
               <!-- Metric icon -->
               <div

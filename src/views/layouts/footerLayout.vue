@@ -28,7 +28,7 @@ const pages = [
   <!-- ========================================
        FOOTER SECTION
   ========================================= -->
-  <footer class="footer-custom text-light pt-5">
+  <footer class="footer-custom text-cream pt-5">
     <!-- ========================================
          TOP SOCIAL SECTION
     ========================================= -->

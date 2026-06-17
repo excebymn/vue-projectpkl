@@ -149,14 +149,14 @@ const searchEnter = () => {
 }
 </script>
 
-<template data-aos="zoom-in-down" data-aos-duration="1500">
+<template>
   <nav
-    class="navbar navbar-expand-lg bg-body-tertiary shadow-lg position-fixed top-0 start-50 translate-middle-x mt-3 px-3 rounded"
+    class="navbar navbar-expand-lg bg-cream shadow-lg position-fixed top-0 start-50 translate-middle-x mt-3 px-3 rounded"
     style="width: 90%; z-index: 999"
   >
-    <div class="container-fluid">
+    <div class="container-fluid bg-cream">
       <!-- Brand logo and company name -->
-      <router-link to="/" class="navbar-brand d-flex align-items-center gap-2">
+      <router-link to="/" class="navbar-brand d-flex align-items-center gap-2 bg-cream">
         <img :src="Logo" height="32" alt="Logo" />
 
         <span class="fw-bold text-capitalize d-none d-lg-inline"> Makna Consulting </span>
@@ -181,7 +181,7 @@ const searchEnter = () => {
             <router-link
               :to="menu.path"
               class="nav-link px-3 py-2"
-              active-class="fw-bold text-warning"
+              active-class="fw-bold text-yellow"
             >
               {{ menu.name }}
             </router-link>
@@ -199,13 +199,13 @@ const searchEnter = () => {
               @focus="isFocused = true"
               @keyup.enter="searchEnter"
               @blur="setTimeout(() => (isFocused = false), 150)"
-              class="form-control"
+              class="form-control bg-cream border-yellow"
               type="search"
               placeholder="Cari halaman..."
             />
 
             <!-- Desktop search button -->
-            <button class="btn btn-warning ms-2 d-none d-lg-block" @click="searchEnter">
+            <button class="btn bg-yellow ms-2 d-none d-lg-block" @click="searchEnter">
               Search
             </button>
           </div>
@@ -220,7 +220,7 @@ const searchEnter = () => {
               v-for="item in filteredResults"
               :key="item.path"
               @mousedown.prevent="goTo(item.path)"
-              class="list-group-item list-group-item-action py-3"
+              class="list-group-item  bg-cream list-group-item-action py-3"
             >
               <!-- Direct page match -->
               <div v-if="item.isPageMatch">📄 Open {{ item.name }}</div>

@@ -122,7 +122,7 @@ onMounted(async () => {
               <li
                 v-for="(value, i) in item.values"
                 :key="i"
-                class="list-group-item px-0"
+                class="list-group-item px-0 bg-cream"
                 data-aos="flip-right"
                 data-aos-once="false"
               >
@@ -163,7 +163,7 @@ onMounted(async () => {
             data-aos-once="false"
           >
             <!-- Service card -->
-            <div class="card h-100 border-0 shadow-sm p-4 text-center">
+            <div class="card bg-cream h-100 border-0 shadow-sm p-4 text-center">
               <!-- Service icon -->
               <i :class="['bi', service.icon, 'display-4', 'text-warning']"></i>
 
@@ -200,7 +200,7 @@ onMounted(async () => {
           <!-- Loop through team members -->
           <div v-for="(member, index) in AboutData.team.members" :key="index" class="col-md-4">
             <!-- Team member card -->
-            <div class="card border-0 shadow-sm text-center p-4">
+            <div class="card bg-cream border-0 shadow-sm text-center p-4">
               <!-- Member image -->
               <img
                 :src="member.image"
@@ -228,7 +228,7 @@ onMounted(async () => {
          CTA SECTION
     ========================= -->
 
-    <section class="py-5 bg-white">
+    <section class="py-5 bg-cream">
       <div class="container">
         <div class="row align-items-center">
           <!-- CTA image -->

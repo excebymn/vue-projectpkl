@@ -86,7 +86,7 @@ onMounted(async () => {
       <div class="search-wrapper">
         <i class="bi bi-search"></i>
 
-        <input v-model="search" class="form-control" placeholder="Cari layanan..." />
+        <input v-model="search" class="form-control bg-cream" placeholder="Cari layanan..." />
       </div>
     </section>
 
@@ -107,7 +107,7 @@ onMounted(async () => {
           :key="i"
           data-aos="zoom-in-up"
         >
-          <div class="card h-100 service-card border-0">
+          <div class="card h-100 service-card bg-cream border-0">
             <div class="card-body">
               <h5 class="fw-bold" v-html="highlightText(service.title)" />
 
