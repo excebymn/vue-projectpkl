@@ -5,6 +5,7 @@ import ClientSection from '@/components/portofolio/ClientSection.vue'
 import PengalamanSection from '@/components/portofolio/PengalamanSection.vue'
 import TestimoniSection from '@/components/portofolio/TestimoniSection.vue'
 import StatistikSection from '@/components/portofolio/StatisticSection.vue'
+import GallerySection from '@/components/portofolio/GaleriSection.vue'
 // import ReferensiSection from '@/components/portofolio/ReferenceSection.vue'
 
 import img1 from '@/assets/portofolio/hero/1.png'
@@ -131,6 +132,13 @@ onMounted(async () => {
         >
           Statistik
         </button>
+        <button
+          class="tab-pill-btn"
+          :class="{ active: activeTab === 'galeri' }"
+          @click="activeTab = 'galeri'"
+        >
+          Galeri
+        </button>
 
         <!--   <button
         class="tab-pill-btn"
@@ -148,6 +156,7 @@ onMounted(async () => {
           <PengalamanSection v-if="activeTab === 'pengalaman'" />
           <ClientSection v-if="activeTab === 'client'" @go-to-project="goToProject" />
           <StatistikSection v-if="activeTab === 'statistik'" />
+          <GallerySection v-if="activeTab === 'galeri'" />
           <!-- <ReferensiSection v-if="activeTab === 'referensi'" /> -->
         </div>
       </div>
@@ -177,7 +186,7 @@ onMounted(async () => {
 }
 
 .pill-tabs .tab-pill-btn:hover {
-  background-color: #FFF4CC;
+  background-color: #fff4cc;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
