@@ -1,33 +1,17 @@
 <template>
-  <section
-    class="py-5 bg-cream"
-    data-aos="slide-up"
-    data-aos-once="false"
-  >
+  <section class="py-5 bg-cream" data-aos="slide-up" data-aos-once="false">
     <div class="container">
       <!-- Section heading -->
       <div class="text-center mb-5">
-        <p class="text-warning fw-semibold text-uppercase small mb-2">
-          Statistik Perusahaan
-        </p>
-
-        <h2 class="fw-bold mb-3">
-          Data & Pencapaian MAKNA Consulting
-        </h2>
-
-        <p class="text-body-secondary mx-auto statistik-subtitle">
-          Beberapa pencapaian dan cakupan layanan profesional yang telah dipercaya
-          berbagai instansi dan perusahaan.
+        <h2 class="client-title fw-bold">Pencapaian dalam Angka</h2>
+        <p class="client-subtitle">
+          Gambaran rekam jejak, jangkauan layanan, dan hasil kerja berdasarkan data.
         </p>
       </div>
 
       <!-- Statistics cards grid -->
       <div class="row g-4">
-        <div
-          v-for="(item, index) in statistik"
-          :key="index"
-          class="col-12 col-sm-6 col-xl-3"
-        >
+        <div v-for="(item, index) in statistik" :key="index" class="col-12 col-sm-6 col-xl-3">
           <div class="card border shadow-sm h-100 statistik-card bg-cream">
             <div class="card-body text-center p-4">
               <!-- Metric icon -->
@@ -71,14 +55,9 @@ const animateValue = (start, end, duration, index) => {
   const step = (timestamp) => {
     if (!startTimestamp) startTimestamp = timestamp
 
-    const progress = Math.min(
-      (timestamp - startTimestamp) / duration,
-      1,
-    )
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1)
 
-    animatedNumbers.value[index] = Math.floor(
-      progress * (end - start) + start,
-    )
+    animatedNumbers.value[index] = Math.floor(progress * (end - start) + start)
 
     if (progress < 1) {
       window.requestAnimationFrame(step)

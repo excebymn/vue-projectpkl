@@ -1,27 +1,24 @@
 <template>
-  <div data-aos="zoom-in" data-aos-once="false">
-    <h4 class="fw-bold mb-4 text-center" bg-cream>Portfolio Proyek</h4>
-
-    <p text-center class="text-secondary mb-4">
-      Rekam jejak ini mencerminkan kompetensi kami dalam menangani berbagai proyek strategis,
-      mulai dari audit sistem manajemen hingga penyusunan kebijakan teknis. Setiap baris data
-      ini adalah bukti nyata dedikasi kami dalam memberikan solusi yang patuh standar dan
-      berdampak positif bagi klien.
+  <div class="text-center mb-5" data-aos="zoom-in" data-aos-once="false">
+    <h2 class="client-title fw-bold">Pengalaman dan Riwayat Proyek</h2>
+    <p class="client-subtitle">
+      Berbagai kegiatan, pelatihan, pendampingan, dan proyek yang telah kami laksanakan.
     </p>
+<div
+  class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3 mb-4"
+>
+  <p class="mb-0 text-muted small">
+    Klik salah satu kartu untuk melihat informasi lebih lengkap.
+  </p>
 
-    <div
-      class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4"
-    >
-      <p class="mb-0 text-center text-md-start">ketuk untuk baca selengkapnya</p>
-
-      <input
-        v-model="searchQuery"
-        type="text"
-        class="form-control bg-cream border-yellow"
-        placeholder="atau cari berdasarkan nama proyek, klien, kategori, dll..."
-        style="max-width: 500px"
-      />
-    </div>
+  <input
+    v-model="searchQuery"
+    type="text"
+    class="form-control bg-cream border-yellow"
+    placeholder="Cari proyek, klien, kategori, lokasi..."
+    style="max-width: 500px"
+  />
+</div>
 
     <div class="accordion" id="projectAccordion">
       <div
@@ -37,10 +34,7 @@
             :data-bs-target="`#collapse${index}`"
           >
             <div class="d-flex flex-column text-start">
-              <span
-                class="fw-semibold"
-                v-html="highlightText(project.title)"
-              ></span>
+              <span class="fw-semibold" v-html="highlightText(project.title)"></span>
 
               <small
                 class="text-secondary"
@@ -76,7 +70,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 

@@ -16,8 +16,9 @@ const filteredImages = computed(() => {
       <!-- Section heading -->
       <div class="text-center mb-5">
         <h2 class="client-title fw-bold">Dipercaya Berbagai Instansi & Perusahaan</h2>
-
-        <p class="client-subtitle">Beberapa client dan partner yang pernah bekerja sama</p>
+        <p class="client-subtitle">
+          Beberapa client dan partner yang pernah bekerja sama dengan kami.
+        </p>
       </div>
 
       <!-- Client search input -->

@@ -1,15 +1,11 @@
 <template>
-  <div
-    class="testimonial-section py-5"
-    data-aos="slide-up"
-    data-aos-once="false"
-  >
+  <div class="testimonial-section py-5" data-aos="slide-up" data-aos-once="false">
     <div class="container">
       <!-- Section heading -->
       <div class="text-center mb-5">
-        <h2 class="fw-bold section-title">Client Testimonial</h2>
-        <p class="section-subtitle">
-          Beberapa pengalaman dan feedback dari client
+        <h2 class="client-title fw-bold">Testimoni dan Pengalaman Client</h2>
+        <p class="client-subtitle">
+          Cerita, kesan, dan pengalaman dari client yang telah bekerja sama dengan kami.
         </p>
       </div>
 
@@ -51,12 +47,7 @@
             <!-- Rating display -->
             <div class="d-flex align-items-center mb-3">
               <div class="stars me-2">
-                <span
-                  v-for="star in generateStars(item.rating)"
-                  :key="star"
-                >
-                  ⭐
-                </span>
+                <span v-for="star in generateStars(item.rating)" :key="star"> ⭐ </span>
               </div>
 
               <span class="rating-number">

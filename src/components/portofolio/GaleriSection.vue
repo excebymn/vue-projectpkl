@@ -5,10 +5,10 @@ import { projects } from '@/data/portofolio/GaleriData.js'
 /**
  * LOAD MEDIA (Vite safe map)
  */
-const mediaFiles = import.meta.glob(
-  '/src/assets/portofolio/galeri/*',
-  { eager: true, import: 'default' }
-)
+const mediaFiles = import.meta.glob('/src/assets/portofolio/galeri/*', {
+  eager: true,
+  import: 'default',
+})
 
 const getMediaUrl = (filename) => {
   const path = `/src/assets/portofolio/galeri/${filename}`
@@ -61,6 +61,12 @@ onMounted(() => {
 </script>
 
 <template>
+  <div class="text-center mb-5">
+    <h2 class="client-title fw-bold">Dokumentasi Kegiatan</h2>
+    <p class="client-subtitle">
+      Kumpulan foto dan dokumentasi dari berbagai kegiatan, pelatihan, dan kolaborasi.
+    </p>
+  </div>
   <div class="gallery-grid">
     <div
       v-for="(project, index) in shuffledProjects"
@@ -101,17 +107,14 @@ onMounted(() => {
   <div class="modal fade" id="galleryModal" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content preview-modal">
-
         <button
           class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
           data-bs-dismiss="modal"
         />
 
         <div v-if="selectedProject" class="preview-wrapper">
-
           <!-- MEDIA WRAPPER BIAR RASIO DINAMIS -->
           <div class="media-box" :style="{ aspectRatio: mediaRatio }">
-
             <!-- VIDEO -->
             <iframe
               v-if="selectedProject.type === 'video'"
@@ -121,17 +124,12 @@ onMounted(() => {
             />
 
             <!-- IMAGE -->
-            <img
-              v-else
-              :src="getMediaUrl(selectedProject.file)"
-              class="preview-media"
-            />
+            <img v-else :src="getMediaUrl(selectedProject.file)" class="preview-media" />
           </div>
 
           <div class="preview-info">
             <h5>{{ selectedProject.client }}</h5>
           </div>
-
         </div>
       </div>
     </div>
@@ -156,7 +154,7 @@ onMounted(() => {
 .gallery-media {
   width: 100%;
   display: block;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 .gallery-item:hover .gallery-media {
@@ -171,8 +169,8 @@ onMounted(() => {
   align-items: flex-end;
   padding: 1rem;
   opacity: 0;
-  transition: .3s ease;
-  background: linear-gradient(to top, rgba(0,0,0,.85), transparent);
+  transition: 0.3s ease;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
 }
 
 .gallery-item:hover .gallery-overlay {
@@ -191,8 +189,8 @@ onMounted(() => {
 .video-badge i {
   font-size: 2.2rem;
   color: white;
-  background: rgba(0,0,0,.4);
-  padding: .6rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.6rem;
   border-radius: 50%;
 }
 
@@ -221,13 +219,17 @@ onMounted(() => {
   width: 100%;
   padding: 1rem;
   color: white;
-  background: linear-gradient(to top, rgba(0,0,0,.9), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
 }
 
 @media (max-width: 768px) {
-  .gallery-grid { columns: 2; }
+  .gallery-grid {
+    columns: 2;
+  }
 }
 @media (max-width: 576px) {
-  .gallery-grid { columns: 1; }
+  .gallery-grid {
+    columns: 1;
+  }
 }
 </style>
