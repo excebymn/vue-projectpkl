@@ -1,168 +1,64 @@
-# 🚀 Makna Consulting Website
+# Makna Consulting — Company Profile Website
 
-![Vue](https://img.shields.io/badge/Vue-3-42b883?logo=vue.js)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Development-yellow)
-
-Website company profile untuk **Makna Consulting** — dibangun menggunakan Vue 3 dengan pendekatan modular, clean, dan scalable.
-
----
+Website company profile untuk **Makna Consulting**, sebuah lembaga konsultasi SDM dan pengembangan organisasi. Dibangun menggunakan **Vue 3 (Composition API)**, **Vue Router**, dan **Bootstrap 5** (dengan Bootstrap Icons), dilengkapi animasi scroll menggunakan **AOS (Animate On Scroll)**.
 
 ## ✨ Fitur Utama
 
-* 🎯 Hero slider interaktif
-* 🧩 Struktur modular (layout + pages)
-* 🧑‍💼 About dengan zig-zag layout
-* 🛠 Services (kategori + detail)
-* 📊 Portfolio dengan filter
-* 👨‍💻 Developer team (interactive card)
-* 📞 Contact multi-platform
-* 🤝 Trusted client (marquee logo)
-* 📱 Responsive design
+- **Navbar responsif** dengan fitur pencarian halaman pintar (keyword + fuzzy matching) yang mengarahkan pengguna ke halaman yang relevan.
+- **Hero section dinamis** di setiap halaman (About, Contact, Portofolio, Services) dengan slideshow gambar background otomatis.
+- **Floating action buttons**: tombol WhatsApp (dengan label yang muncul saat hover) dan tombol "back to top", keduanya otomatis menyesuaikan posisi agar tidak menabrak footer.
+- **Halaman Portofolio** dengan sistem tab (Testimoni, Pengalaman, Client, Statistik, Galeri) yang dapat dikontrol lewat query parameter URL.
+- **Halaman Services** dengan pencarian layanan real-time serta highlight kata kunci pada hasil pencarian.
+- **Call-to-Action (CTA) section** yang reusable dengan tombol menuju halaman Contact dan Services.
+- **Footer** berisi info kontak, social media, dan navigasi cepat ke halaman-halaman utama.
+- Desain **fully responsive** (mobile, tablet, desktop) dengan breakpoint kustom di tiap komponen.
 
----
+## 🗂️ Struktur Komponen
 
-## 🛠 Tech Stack
+| Komponen | Deskripsi |
+|---|---|
+| `Header.vue` | Navbar utama + search bar dengan algoritma scoring (page match, keyword match, fuzzy match) |
+| `Footer.vue` | Footer dengan brand info, navigasi halaman, kontak, dan social links |
+| `Cta.vue` | Section ajakan bertindak (Call To Action) berwarna kuning khas brand |
+| `FloatingButtons.vue` | Tombol mengambang WhatsApp & scroll-to-top yang auto-reposisi terhadap footer |
+| `About.vue` | Halaman "Tentang Kami": hero, story/values, layanan unggulan, tim, dan CTA |
+| `Contact.vue` | Halaman "Hubungi Kami": hero dan kartu-kartu kontak (WhatsApp, email, dll) |
+| `Home.vue` | Halaman utama: hero, intro perusahaan, highlight layanan, showcase portofolio, alasan memilih Makna Consulting |
+| `Portofolio.vue` | Halaman portofolio dengan tab navigasi (testimoni, pengalaman, client, statistik, galeri) |
+| `Services.vue` | Halaman layanan dengan pencarian & highlight teks hasil pencarian |
 
-| Tech         | Keterangan                         |
-| ------------ | ---------------------------------- |
-| Vue 3        | Composition API (`<script setup>`) |
-| Bootstrap 5  | Layout & responsive                |
-| Vue Router   | Routing                            |
-| Font Awesome | Icon                               |
+## 🛠️ Teknologi
 
----
+- **Vue 3** (`<script setup>`, Composition API: `ref`, `computed`, `onMounted`, `onUnmounted`, `nextTick`)
+- **Vue Router** (navigasi antar halaman, termasuk query parameter untuk tab aktif)
+- **Bootstrap 5** (grid system, utility classes, komponen UI)
+- **Bootstrap Icons** (`bi bi-*`)
+- **AOS (Animate on Scroll)** (`data-aos="..."`) untuk animasi saat scroll
+- Data-driven content dipisah ke folder `@/data/...` (mis. `AboutData`, `ContactData`, `ServiceData`)
 
-## 📁 Struktur Project
+## 🎨 Tema Desain
 
-```bash
-src/
-├── views/
-│   ├── layouts/
-│   │   ├── HomeLayout.vue
-│   │   └── FooterLayout.vue
-│   │
-│   └── pages/
-│       ├── HomeView.vue
-│       ├── AboutView.vue
-│       ├── ServiceView.vue
-│       ├── PortfolioView.vue
-│       ├── DeveloperView.vue
-│       └── ContactView.vue
-│
-├── router/
-│   └── index.js
-│
-└── App.vue
+- Warna utama: **kuning/emas (`#ffc107`)** sebagai identitas brand, dipadukan dengan warna **cream** dan **dark (`#212529`)**.
+- Banyak section menggunakan **background SVG pattern** (geometris & gelombang) yang di-encode langsung sebagai `background-image` base64/URL-encoded SVG.
+- Efek hover halus (`translateY`, `scale`) pada kartu, tombol, dan link untuk memberi kesan interaktif.
 
+## 📱 Responsivitas
 
-public/
-└── images/
-    ├── PrimaryLogo/
-    │   └── Logo.png
-    │
-    ├── SecondaryLogo/
-    │   ├── 1.png
-    │   ├── 2.png
-    │   └── ...
-    │
-    └── Content/
-        └── (asset gambar konten)
-```
+Setiap komponen memiliki breakpoint khusus:
+- **Mobile**: `≤576px` / `≤768px` / `≤991px` — navigasi jadi vertikal, tombol full-width, padding diperkecil.
+- **Tablet**: `577px–991px` — ukuran teks menengah.
+- **Desktop**: `≥992px` — layout horizontal penuh, ukuran teks lebih besar.
 
----
+## 📌 Catatan Pengembangan
 
-## ⚙️ Instalasi & Setup
+- Fitur pencarian di `Header.vue` menggunakan sistem **scoring** (kecocokan nama halaman + keyword + fuzzy match sederhana) lalu diurutkan berdasarkan skor tertinggi, maksimal 5 hasil ditampilkan.
+- `FloatingButtons.vue` menghitung posisi tombol secara dinamis berdasarkan `getBoundingClientRect()` dari elemen `<footer>` agar tombol tidak menutupi konten footer saat di-scroll ke bawah.
+- Beberapa halaman (`About`, `Contact`, `Portofolio`, `Services`) memiliki logika slideshow hero image yang sama (interval 2–3 detik) — berpotensi diekstrak menjadi **composable** (`useHeroSlideshow`) untuk mengurangi duplikasi kode.
+- Terdapat komentar developer "ERROR NYA BIARIN WOY EMANG GITU" di `Portofolio.vue` pada fungsi `goToProject` — perlu dicek apakah ini debug note yang perlu dibersihkan sebelum production.
 
-```bash
-# Clone repo
-git clone https://github.com/username/makna-consulting.git
+## 🚀 Potensi Peningkatan
 
-# Masuk folder
-cd makna-consulting
-
-# Install dependency
-npm install
-
-# Run dev server
-npm run dev
-```
-
----
-
-## 🧠 Arsitektur
-
-Project ini menggunakan pendekatan:
-
-### 1. Layout-based Structure
-
-* `layouts/` → komponen global (header, footer, dll)
-* `pages/` → halaman utama
-
-### 2. Section-based UI
-
-Setiap halaman dibangun dari section modular:
-
-```
-[page]-[section]-section
-```
-
-Contoh:
-
-* `home-hero-section`
-* `service-detail-section`
-* `portfolio-grid-section`
-
----
-
-## 🎨 Design System
-
-* 🎨 Primary color: `#ffc107`
-* 📦 Card-based layout
-* 📐 Bootstrap grid system
-* 💡 Clean & minimal UI
-
----
-
-## 🔧 Best Practices
-
-* Scoped CSS (hindari konflik global)
-* Data-driven UI (loop & reactive state)
-* Konsistensi naming class
-* Struktur siap di-refactor ke component reusable
-
----
-
-## 🚧 Roadmap / Improvement
-
-* [ ] Refactor ke reusable components (`Hero`, `Card`, dll)
-* [ ] Tambahkan animation (Vue Transition)
-* [ ] Lazy loading image
-* [ ] Integrasi API (dynamic data)
-* [ ] Cleanup interval (`onUnmounted`)
-* [ ] SEO optimization
-
----
-
-## 🤝 Kontribusi
-
-1. Fork repository
-2. Buat branch (`feature/nama-fitur`)
-3. Commit perubahan
-4. Pull request
-
----
-
-## 📄 License
-
-MIT License
-
----
-
-## ⚡ Catatan Developer
-
-* Asset gambar disimpan di `public/images`
-* Logo client (trusted) auto-load dari folder `SecondaryLogo`
-* Struktur sudah disiapkan untuk scale ke project production
-
+1. Ekstrak logika slideshow hero image (duplikasi di 4 halaman) menjadi composable bersama.
+2. Tambahkan `alt` text yang lebih deskriptif pada gambar-gambar galeri/tim untuk aksesibilitas.
+3. Pertimbangkan lazy-loading untuk gambar hero agar performa awal (initial load) lebih cepat.
+4. Link social media (Facebook, Instagram, TikTok) di `Footer.vue` masih `#` — perlu diisi URL asli.
