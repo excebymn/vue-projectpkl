@@ -1,13 +1,30 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { images } from '@/data/home/TooltipData.js'
+
+const props = defineProps({
+  initialSearch: {
+    type: String,
+    default: '',
+  },
+})
 
 const emit = defineEmits(['go-to-project'])
 
-const searchQuery = ref('')
+const searchQuery = ref(props.initialSearch)
+
+// Kalau parent mengirim search baru (misal klik logo lagi dari Home)
+watch(
+  () => props.initialSearch,
+  (val) => {
+    searchQuery.value = val
+  }
+)
 
 const filteredImages = computed(() => {
-  return images.filter((item) => item.name.toLowerCase().includes(searchQuery.value.toLowerCase()))
+  return images.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  )
 })
 </script>
 <template>

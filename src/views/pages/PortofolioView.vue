@@ -1,6 +1,7 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
+
 import ClientSection from '@/components/portofolio/ClientSection.vue'
 import PengalamanSection from '@/components/portofolio/PengalamanSection.vue'
 import TestimoniSection from '@/components/portofolio/TestimoniSection.vue'
@@ -32,6 +33,40 @@ onUnmounted(() => {
 const route = useRoute()
 
 const activeTab = ref(route.query.tab || 'testimoni')
+const clientSearch = ref(route.query.search || '')
+
+const scrollToContent = () => {
+  nextTick(() => {
+    document.getElementById('portofolioContent')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  })
+}
+
+onMounted(async () => {
+  await nextTick()
+
+  if (route.query.search) {
+    scrollToContent()
+  } else {
+    targetSection.value?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    })
+  }
+})
+
+watch(
+  () => route.query,
+  (newQuery) => {
+    activeTab.value = newQuery.tab || activeTab.value
+    clientSearch.value = newQuery.search || ''
+    if (newQuery.search) {
+      scrollToContent()
+    }
+  }
+)
 
 // ERROR NYA BIARIN WOY EMANG GITU YANG ClientName
 const goToProject = (clientName) => {
@@ -55,7 +90,6 @@ onMounted(async () => {
     block: 'center',
   })
 })
-
 </script>
 <template>
   <div class="background-wrapper">
@@ -151,14 +185,18 @@ onMounted(async () => {
       </div>
 
       <!-- Content -->
-      <div class="card border-0 shadow-sm rounded-4">
+      <!-- Content -->
+      <div id="portofolioContent" class="card border-0 shadow-sm rounded-4">
         <div class="card-body p-4 bg-cream">
           <TestimoniSection v-if="activeTab === 'testimoni'" />
           <PengalamanSection v-if="activeTab === 'pengalaman'" />
-          <ClientSection v-if="activeTab === 'client'" @go-to-project="goToProject" />
+          <ClientSection
+            v-if="activeTab === 'client'"
+            :initial-search="clientSearch"
+            @go-to-project="goToProject"
+          />
           <StatistikSection v-if="activeTab === 'statistik'" />
           <GallerySection v-if="activeTab === 'galeri'" />
-          <!-- <ReferensiSection v-if="activeTab === 'referensi'" /> -->
         </div>
       </div>
     </section>
