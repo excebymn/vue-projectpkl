@@ -19,7 +19,7 @@ const images = [img1, img2, img3, img4, img5]
 
 const currentImage = ref(0)
 
-let interval = null
+let interval = nullnull
 
 onMounted(() => {
   interval = setInterval(() => {
