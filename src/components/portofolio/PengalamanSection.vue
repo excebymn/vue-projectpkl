@@ -38,7 +38,7 @@
 
               <small
                 class="text-secondary"
-                v-html="highlightText(`${project.client}`)"
+                v-html="highlightText(project.client)"
               ></small>
             </div>
           </button>
@@ -85,23 +85,23 @@ import { projects } from '../../data/portofolio/PengalamanData.js'
 
 const searchQuery = ref('')
 
-const filteredProjects = computed(() => {
-  return projects.filter((project) => {
-    const query = searchQuery.value.toLowerCase()
+// Safely reads a field as a lowercase string, even if it's missing on
+// a given project entry, so the filter never throws on incomplete data.
+const safeLower = (value) => (value ?? '').toString().toLowerCase()
 
-    return (
-      project.title.toLowerCase().includes(query) ||
-      project.client.toLowerCase().includes(query) ||
-      project.category.toLowerCase().includes(query) ||
-      project.location.toLowerCase().includes(query) ||
-      project.status.toLowerCase().includes(query) ||
-      String(project.year).includes(query)
-    )
-  })
+const filteredProjects = computed(() => {
+  const query = searchQuery.value.toLowerCase()
+
+  return projects.filter((project) => (
+    safeLower(project.title).includes(query) ||
+    safeLower(project.client).includes(query) ||
+    safeLower(project.category).includes(query) ||
+    safeLower(project.location).includes(query)
+  ))
 })
 
 const escapeHtml = (text) => {
-  return String(text)
+  return (text ?? '').toString()
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
