@@ -4,23 +4,23 @@
     <p class="client-subtitle">
       Berbagai kegiatan, pelatihan, pendampingan, dan proyek yang telah kami laksanakan.
     </p>
-<div
-  class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3 mb-4"
->
-  <p class="mb-0 text-muted small">
-    Klik salah satu kartu untuk melihat informasi lebih lengkap.
-  </p>
+    <div
+      class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3 mb-4"
+    >
+      <p class="mb-0 text-muted small">
+        Klik salah satu kartu untuk melihat informasi lebih lengkap.
+      </p>
 
-  <input
-    v-model="searchQuery"
-    type="text"
-    class="form-control bg-cream border-yellow"
-    placeholder="Cari proyek, klien, kategori, lokasi..."
-    style="max-width: 500px"
-  />
-</div>
+      <input
+        v-model="searchQuery"
+        type="text"
+        class="form-control bg-cream border-yellow"
+        placeholder="Cari proyek, klien, kategori, lokasi..."
+        style="max-width: 500px"
+      />
+    </div>
 
-    <div class="accordion" id="projectAccordion">
+    <div class="accordion" id="projectAccordion" v-if="filteredProjects.length">
       <div
         class="accordion-item bg-cream"
         v-for="(project, index) in filteredProjects"
@@ -69,6 +69,12 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Empty state shown when the search query matches no project -->
+    <div v-else class="py-5 text-muted">
+      <p class="mb-0 fw-semibold">Tidak ada proyek yang cocok dengan pencarian Anda.</p>
+      <p class="mb-0 small">Coba gunakan kata kunci lain seperti nama klien, kategori, atau lokasi.</p>
     </div>
   </div>
 </template>
