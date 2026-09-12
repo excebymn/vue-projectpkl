@@ -1,5 +1,5 @@
 <script setup>
-import DeveloperData from '@/data/dev/DeveloperData'
+import DeveloperData from '../../data/dev/DeveloperData'
 
 /*
 |--------------------------------------------------------------------------

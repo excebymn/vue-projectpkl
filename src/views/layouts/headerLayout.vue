@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import Logo from '@/assets/home/PrimaryLogo/Logo.png'
+import Logo from '../../assets/home/PrimaryLogo/Logo.png'
 
 // Vue Router instance for page navigation.
 const router = useRouter()

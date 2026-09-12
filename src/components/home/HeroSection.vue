@@ -1,9 +1,9 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import img1 from '@/assets/home/hero/1.jpg'
-import img2 from '@/assets/home/hero/2.jpg'
-import img3 from '@/assets/home/hero/3.jpg'
-import img4 from '@/assets/home/hero/4.jpg'
+import img1 from '../../assets/home/hero/1.jpg'
+import img2 from '../../assets/home/hero/2.jpg'
+import img3 from '../../assets/home/hero/3.jpg'
+import img4 from '../../assets/home/hero/4.jpg'
 
 // Ganti teks "alt" di bawah dengan deskripsi asli tiap foto.
 const images = [

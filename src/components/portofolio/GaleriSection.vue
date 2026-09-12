@@ -1,6 +1,6 @@
 <script setup>
 import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
-import { projects } from '@/data/portofolio/GaleriData.js'
+import { projects } from '../../data/portofolio/GaleriData.js'
 
 const mediaFiles = import.meta.glob('/src/assets/portofolio/galeri/*', {
   eager: true,

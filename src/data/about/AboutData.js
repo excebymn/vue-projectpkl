@@ -1,8 +1,8 @@
-import img1 from '@/assets/home/hero/1.jpg'
-import img2 from '@/assets/home/hero/2.jpg'
-import img3 from '@/assets/home/hero/3.jpg'
-import img4 from '@/assets/home/hero/4.jpg'
-import ceo from '@/assets/about/ceo.png'
+import img1 from '../../assets/home/hero/1.jpg'
+import img2 from '../../assets/home/hero/2.jpg'
+import img3 from '../../assets/home/hero/3.jpg'
+import img4 from '../../assets/home/hero/4.jpg'
+import ceo from '../../assets/about/ceo.png'
 export default {
   // Content collection for storytelling and company profile sections.
   stories: [

@@ -1,7 +1,7 @@
-import img1 from '@/assets/portofolio/testimoni/1.png'
-import img2 from '@/assets/portofolio/testimoni/2.png'
-import img3 from '@/assets/portofolio/testimoni/3.png'
-import img4 from '@/assets/portofolio/testimoni/4.png'
+import img1 from '../../assets/portofolio/testimoni/1.png'
+import img2 from '../../assets/portofolio/testimoni/2.png'
+import img3 from '../../assets/portofolio/testimoni/3.png'
+import img4 from '../../assets/portofolio/testimoni/4.png'
 
 export const testimoni = [
   {

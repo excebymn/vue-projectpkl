@@ -1,12 +1,12 @@
 <script setup>
 // Services page component: manages featured services, searchable service list, and highlight rendering.
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
-import { allServices } from '@/data/services/ServiceData'
-import HighlightedServices from '@/components/services/HighlightedServices.vue'
+import { allServices } from '../../data/services/ServiceData'
+import HighlightedServices from '../../components/services/HighlightedServices.vue'
 
-import img1 from '@/assets/services/hero/1.png'
-import img2 from '@/assets/services/hero/2.png'
-import img3 from '@/assets/services/hero/3.png'
+import img1 from '../../assets/services/hero/1.png'
+import img2 from '../../assets/services/hero/2.png'
+import img3 from '../../assets/services/hero/3.png'
 const images = [img1, img2, img3]
 const currentImage = ref(0)
 let interval = null

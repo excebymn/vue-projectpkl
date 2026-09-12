@@ -45,7 +45,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { statistik } from '@/data/portofolio/StatistikData.js'
+import { statistik } from '../../data/portofolio/StatistikData.js'
 
 const animatedNumbers = ref([])
 

@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { testimoni } from '@/data/portofolio/TestimoniData.js'
+import { testimoni } from '../../data/portofolio/TestimoniData.js'
 
 const generateStars = (rating) => {
   return Math.round(rating)

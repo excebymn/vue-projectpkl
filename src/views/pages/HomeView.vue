@@ -1,7 +1,7 @@
 <script setup>
-import HeroSection from '@/components/home/HeroSection.vue'
-import HighlightedServices from '@/components/services/HighlightedServices.vue'
-import MarqueSection from '@/components/home/MarqueSection.vue'
+import HeroSection from '../../components/home/HeroSection.vue'
+import HighlightedServices from '../../components/services/HighlightedServices.vue'
+import MarqueSection from '../../components/home/MarqueSection.vue'
 
 const whyItems = [
   {
@@ -54,7 +54,7 @@ const whyItems = [
       >
         <div class="col-md-6 p-0">
           <img
-            src="@/assets/home/cta/portofolioCTA.png"
+            src="../../assets/home/cta/portofolioCTA.png"
             alt="Our Works"
             class="img-fluid w-100 h-100"
             style="object-fit: cover; min-height: 300px"

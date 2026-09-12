@@ -2,18 +2,18 @@
 import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
-import ClientSection from '@/components/portofolio/ClientSection.vue'
-import PengalamanSection from '@/components/portofolio/PengalamanSection.vue'
-import TestimoniSection from '@/components/portofolio/TestimoniSection.vue'
-import StatistikSection from '@/components/portofolio/StatisticSection.vue'
-import GallerySection from '@/components/portofolio/GaleriSection.vue'
-// import ReferensiSection from '@/components/portofolio/ReferenceSection.vue'
+import ClientSection from '../../components/portofolio/ClientSection.vue'
+import PengalamanSection from '../../components/portofolio/PengalamanSection.vue'
+import TestimoniSection from '../../components/portofolio/TestimoniSection.vue'
+import StatistikSection from '../../components/portofolio/StatisticSection.vue'
+import GallerySection from '../../components/portofolio/GaleriSection.vue'
+// import ReferensiSection from '../../components/portofolio/ReferenceSection.vue'
 
-import img1 from '@/assets/portofolio/hero/1.png'
-import img2 from '@/assets/portofolio/hero/2.png'
-import img3 from '@/assets/portofolio/hero/3.png'
-import img4 from '@/assets/portofolio/hero/4.png'
-import img5 from '@/assets/portofolio/hero/5.png'
+import img1 from '../../assets/portofolio/hero/1.png'
+import img2 from '../../assets/portofolio/hero/2.png'
+import img3 from '../../assets/portofolio/hero/3.png'
+import img4 from '../../assets/portofolio/hero/4.png'
+import img5 from '../../assets/portofolio/hero/5.png'
 
 const images = [img1, img2, img3, img4, img5]
 

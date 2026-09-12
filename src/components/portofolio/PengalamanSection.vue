@@ -75,7 +75,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { projects } from '@/data/portofolio/PengalamanData.js'
+import { projects } from '../../data/portofolio/PengalamanData.js'
 
 const searchQuery = ref('')
 

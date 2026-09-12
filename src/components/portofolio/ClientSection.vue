@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
-import { images } from '@/data/home/TooltipData.js'
+import { images } from '../../data/home/TooltipData.js'
 
 const props = defineProps({
   initialSearch: {

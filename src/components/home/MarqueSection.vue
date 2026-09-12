@@ -3,7 +3,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { Tooltip } from 'bootstrap'
-import { images } from '@/data/home/TooltipData.js'
+import { images } from '../../data/home/TooltipData.js'
 
 const router = useRouter()
 

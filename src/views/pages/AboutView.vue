@@ -1,10 +1,10 @@
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
-import AboutData from '@/data/about/AboutData'
+import AboutData from '../../data/about/AboutData'
 
-import img1 from '@/assets/services/hero/1.png'
-import img2 from '@/assets/services/hero/2.png'
-import img3 from '@/assets/services/hero/3.png'
+import img1 from '../../assets/services/hero/1.png'
+import img2 from '../../assets/services/hero/2.png'
+import img3 from '../../assets/services/hero/3.png'
 const images = [img1, img2, img3]
 const currentImage = ref(0)
 let interval = null

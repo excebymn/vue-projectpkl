@@ -1,5 +1,5 @@
 <script setup>
-import Logo from '@/assets/home/PrimaryLogo/Logo.png'
+import Logo from '../../assets/home/PrimaryLogo/Logo.png'
 
 // ========================================
 // SOCIAL MEDIA LINKS

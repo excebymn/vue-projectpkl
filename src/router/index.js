@@ -5,7 +5,7 @@ import HomeView from '../views/pages/HomeView.vue'
 import AboutView from '../views/pages/AboutView.vue'
 import ContactView from '../views/pages/ContactView.vue'
 import ServicesView from '../views/pages/ServicesView.vue'
-import PortofolioView from '@/views/pages/PortofolioView.vue'
+import PortofolioView from '../views/pages/PortofolioView.vue'
 import DeveloperView from '../views/pages/DeveloperView.vue'
 
 // Configure application routes and browser history mode.

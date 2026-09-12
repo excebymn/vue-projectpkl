@@ -2,23 +2,23 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 // Outbound
-import outbound1 from '@/assets/services/highlighted/outbound/1.png'
-import outbound2 from '@/assets/services/highlighted/outbound/2.png'
-import outbound3 from '@/assets/services/highlighted/outbound/3.png'
+import outbound1 from '../../assets/services/highlighted/outbound/1.png'
+import outbound2 from '../../assets/services/highlighted/outbound/2.png'
+import outbound3 from '../../assets/services/highlighted/outbound/3.png'
 
 // SDM
-import sdm1 from '@/assets/services/highlighted/sdm/1.png'
-import sdm2 from '@/assets/services/highlighted/sdm/2.png'
-import sdm3 from '@/assets/services/highlighted/sdm/3.png'
-import sdm4 from '@/assets/services/highlighted/sdm/4.png'
-import sdm5 from '@/assets/services/highlighted/sdm/5.png'
+import sdm1 from '../../assets/services/highlighted/sdm/1.png'
+import sdm2 from '../../assets/services/highlighted/sdm/2.png'
+import sdm3 from '../../assets/services/highlighted/sdm/3.png'
+import sdm4 from '../../assets/services/highlighted/sdm/4.png'
+import sdm5 from '../../assets/services/highlighted/sdm/5.png'
 
 // Pemerintahan
-import pemerintahan1 from '@/assets/services/highlighted/pemerintahan/1.png'
-import pemerintahan2 from '@/assets/services/highlighted/pemerintahan/2.png'
-import pemerintahan3 from '@/assets/services/highlighted/pemerintahan/3.png'
-import pemerintahan4 from '@/assets/services/highlighted/pemerintahan/4.png'
-import pemerintahan5 from '@/assets/services/highlighted/pemerintahan/5.png'
+import pemerintahan1 from '../../assets/services/highlighted/pemerintahan/1.png'
+import pemerintahan2 from '../../assets/services/highlighted/pemerintahan/2.png'
+import pemerintahan3 from '../../assets/services/highlighted/pemerintahan/3.png'
+import pemerintahan4 from '../../assets/services/highlighted/pemerintahan/4.png'
+import pemerintahan5 from '../../assets/services/highlighted/pemerintahan/5.png'
 
 const imageIndex = ref(0)
 let interval = null
