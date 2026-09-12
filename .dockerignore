@@ -1,0 +1,35 @@
+# Dependensi Lokal (Wajib diabaikan karena akan diinstall ulang di dalam Docker)
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Folder Hasil Build Lokal (Agar tidak bentrok dengan build di dalam Docker)
+dist
+build
+
+# Dokumen dan Catatan Git
+.git
+.gitignore
+.gitattributes
+README.md
+LICENSE
+
+# File Konfigurasi Editor (VS Code, WebStorm, dll)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS Sampah (Terutama jika Anda atau tim ada yang pakai macOS/Windows)
+.DS_Store
+Thumbs.db
+
+# File Environment / Rahasia (Opsional - agar token/password lokal tidak bocor ke image)
+.env
+.env.local
+.env.*.local
